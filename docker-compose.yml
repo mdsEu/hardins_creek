@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo:5.0.6-focal
+    container_name: mongodb_hardins_creek
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata:/data/db
+  ts-node-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: hardin
+    image: nodejs
+    container_name: nodejs_hardins_creek
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongo
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+    volumes:
+      - .:/home/node/app
+      - ./nodemon.json:/home/node/app/nodemon.json
+      - ./.babelrc:/home/node/app/.babelrc
+      - ./tsconfig.json:/home/node/app/tsconfig.json
+    expose:
+      - '80'
+    ports:
+      - '80:8080'
+    command: yarn dev
+    depends_on:
+      - mongo
+volumes:
+  dbdata:
