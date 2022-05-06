@@ -4,7 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import * as utils from './server/utils';
 import express, { Request, Response } from "express";
-import Express from './server/handleServer/Express';
+import Express from './server/serverHandler/Express';
 
 const port = utils.server.getPortNumber();
 const dev = !utils.server.isEnvironment('production');
