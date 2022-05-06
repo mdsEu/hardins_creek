@@ -1,4 +1,7 @@
 
+/**
+ * This file handles the working correct of the server with the connection to Next js
+ */
 import next from 'next';
 import cors from 'cors';
 import morgan from 'morgan';

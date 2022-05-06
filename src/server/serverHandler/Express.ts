@@ -1,3 +1,6 @@
+/**
+ * Express class to create an Express server on Node JS
+ */
 import express from 'express';
 
 class Express {
