@@ -4505,6 +4505,19 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.1.0.tgz#61aaed3096d30eacf2a2127118b5b41387d32a67"
   integrity sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==
 
+react-signature-pad-wrapper@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-signature-pad-wrapper/-/react-signature-pad-wrapper-3.1.3.tgz#0bdfcdcd29b31a12e9aee68ba52e19d6484ecc91"
+  integrity sha512-3z9uTzXbjlLi02eHJtsYIoEyM1FTpnM5ucNxFUHRQEA1eeSVm4ZYuPms66oy1PnoI4L7XDr5Eeh+a3oY8RE2XQ==
+  dependencies:
+    signature_pad "^4.0.0"
+    throttle-debounce "^3.0.0"
+
+react-sweet-state@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/react-sweet-state/-/react-sweet-state-2.6.0.tgz#cf08aa5162d2ede41bcd86e192fcbd0255906b50"
+  integrity sha512-oASS1C8n0QnQPiXwwGQSruNkC/U704cipCQH8KpCGzbdm5yHoCwNMdkn7tkCcq+h8fO+2GeSCuhhOkSt1lKA9Q==
+
 react@18.1.0:
   version "18.1.0"
   resolved "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
@@ -4776,6 +4789,11 @@ signal-exit@^3.0.2, signal-exit@^3.0.3, signal-exit@^3.0.7:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
+signature_pad@^4.0.0:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/signature_pad/-/signature_pad-4.0.4.tgz#5198466e992166d71039a40dae7f607cde0b6f78"
+  integrity sha512-6j2WHpSgWU0wwG5362Xne3ELF1HQIIrdW9d95+MDC1Odi0rLw8QItuNjMDPUhp7WaEDqyPHFqu8+ZwHrv6ewKQ==
+
 sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
@@ -4967,6 +4985,11 @@ throat@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/throat/-/throat-6.0.1.tgz#d514fedad95740c12c2d7fc70ea863eb51ade375"
   integrity sha512-8hmiGIJMDlwjg7dlJ4yKGLK8EsYqKgPWbG3b4wjJddKNwc7N7Dpn08Df4szr/sZdMVeOstrdYSsqzX6BYbcB+w==
+
+throttle-debounce@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
+  integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
 
 tmpl@1.0.5:
   version "1.0.5"
