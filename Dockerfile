@@ -8,6 +8,8 @@ RUN yarn
 
 COPY . .
 
+CMD ["yarn", "dev"]
+
 FROM hardin as production
 
 ENV NODE_PATH=./build
