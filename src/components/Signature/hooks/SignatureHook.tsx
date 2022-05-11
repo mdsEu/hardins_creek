@@ -6,7 +6,7 @@ function SignatureHook(store: any) {
   const saveImg = () => {
     const siganture: any = signatureRef.current;
 
-    const img = siganture.toDataURL("image/jpeg");
+    const img = siganture.toDataURL("image/png");
     siganture.clear();
     store.save(img)
   }
