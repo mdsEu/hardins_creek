@@ -5,6 +5,7 @@
 import next from 'next';
 import cors from 'cors';
 import morgan from 'morgan';
+import './server/db/connection'
 import * as utils from './server/utils';
 import express, { Request, Response } from "express";
 import Express from './server/serverHandler/Express';
@@ -27,7 +28,7 @@ app.prepare().then(() => {
 
   server.loadMiddlewares(middlewares);
 
-  server.all('*', (req: Request, res: Response) => {
+  server.loadRoutes('api', '../api').all('*', (req: Request, res: Response) => {
     return handle(req, res);
   }).run();
 });
