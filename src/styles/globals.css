@@ -2,13 +2,15 @@
   --bg-primary-color: #0B1319;
   --text-primary-color: #DBCAAF;
   --text-color-error: #ff0000;
+  --font-primary: "Creek Sans", "sans-serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue";
+  --font-benguiat_pro: "Benguiat Pro", Roboto, Ubuntu;
 }
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font-primary);
 }
 
 a {
