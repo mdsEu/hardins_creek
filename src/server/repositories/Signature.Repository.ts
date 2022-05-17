@@ -20,7 +20,6 @@ class SignatureRepository {
 
       return await this.signature.save();
     } catch (e) {
-      console.log(e)
       throw "This signature couldn\'t be saved";
 
     }
