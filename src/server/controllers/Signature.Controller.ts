@@ -13,7 +13,6 @@ class SignatureController {
 
       return res.json(signature);
     } catch (e) {
-      console.log(e)
       return res.json({
         errorMessage: "Error saving the image"
       });

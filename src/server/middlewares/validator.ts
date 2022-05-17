@@ -9,7 +9,6 @@ const validateImage = (fieldname: string) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const file : any = req.file;
-      console.log(file)
       const storeAdapter = new StoreAdapter(BUCKET_NAME);
 
       if (file.fieldname !== fieldname) {
@@ -30,7 +29,6 @@ const validateImage = (fieldname: string) => {
 
       next();
     } catch (e) {
-      console.log(e)
       return res.json({
         errorMessage: `Error sending the image`
       });
