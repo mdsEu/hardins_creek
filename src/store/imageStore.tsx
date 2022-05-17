@@ -11,8 +11,19 @@ const initialState = {
 };
 
 const actions = {
-  save: (image : string) => ({ }) => {
-    console.log(image)
+  save: (image : string) => async ({ }) => {
+    const file = new File([image], 'capture.png', {
+      type: 'image/png',
+    });
+    const data = new FormData();
+    data.append("signature", file);
+
+    const request = await fetch('./api/signatures/', {
+      method: 'POST',
+      body: data
+    })
+
+    console.log(request)
   },
 }
 
