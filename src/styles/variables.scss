@@ -1,0 +1,73 @@
+$grid-breakpoints: (
+    xs: 0,
+    sm: 575px,
+    md: 767px,
+    lg: 991px,
+    xl: 1199px,
+    xxl: 1999px,
+) !default;
+
+
+@mixin bgImage($size: cover,$position: center top,$repeat: no-repeat, $color: transparent) {
+    background-color: $color;
+    background-position: $position;
+    background-repeat: $repeat;
+    background-size: $size;
+}
+
+@mixin fsize($size) {
+  font-size: $size * 1rem;
+  line-height: $size + 0.2rem;
+}
+
+
+
+//Mediaqueries --------------------
+@mixin breakpointXXlMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'xxl')+1) {
+        @content;
+    }
+}
+@mixin breakpointXlMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'xl')+1) {
+        @content;
+    }
+}
+@mixin breakpointLgMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'lg')+1) {
+        @content;
+    }
+}
+@mixin breakpointMdMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'md')+1) {
+        @content;
+    }
+}
+@mixin breakpointSmMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'sm')+1) {
+        @content;
+    }
+}
+
+//-----------
+
+@mixin breakpointXl {
+    @media screen and (max-width: map-get($grid-breakpoints,'xl')) {
+        @content;
+    }
+}
+@mixin breakpointLg {
+    @media screen and (max-width: map-get($grid-breakpoints,'lg')) {
+        @content;
+    }
+}
+@mixin breakpointMd {
+    @media screen and (max-width: map-get($grid-breakpoints,'md')) {
+        @content;
+    }
+}
+@mixin breakpointSm {
+    @media screen and (max-width: map-get($grid-breakpoints,'sm')) {
+        @content;
+    }
+}
