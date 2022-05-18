@@ -88,18 +88,19 @@
           }
 
           input {
+            font-family: inherit;
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: textfield;
             text-align: center;
             border: 0;
-            @include fsize(1.1);
+            @include fsize(1.5);
             background-color: var(--bg-primary-color);
             color: var(--text-primary-color);
             height: 100%;
             width: 100%;
             @include breakpointSmMin() {
-              @include fsize(1.5);
+              @include fsize(1.8);
             }
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
@@ -129,8 +130,10 @@
 
       }
       button {
+        @include fsize(1);
+        letter-spacing: 4px;
+        font-family: inherit;
         margin: 0;
-        font-weight: bold;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -139,6 +142,9 @@
         background-color: var(--text-primary-color);
         color: var(--bg-primary-color);
         width: 100%;
+        @include breakpointSmMin() {
+          @include fsize(1.5);
+        }
         &:focus-visible {
           outline: var(--bg-primary-color) dashed 2px;
           outline-offset: -4px;
