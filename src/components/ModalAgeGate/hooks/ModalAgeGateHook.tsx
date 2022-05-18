@@ -36,7 +36,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     setDay(dayNumber);
   };
 
-  var onChangeMonth = (val: any) => {
+  const onChangeMonth = (val: any) => {
     let monthNumber = parseInt(val);
     if(isNaN(monthNumber) || monthNumber <= 0 || !regexOnlyNumbers.test(val)) {
       setMonth('');
