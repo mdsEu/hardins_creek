@@ -1,7 +1,10 @@
 /**
  * Express class to create an Express server on Node JS
  */
+import fs from 'fs';
+import path from 'path';
 import express from 'express';
+import pluralize from "pluralize";
 
 class Express {
   server;
@@ -10,6 +13,20 @@ class Express {
   constructor(port:number){
     this.server = express();
     this.port = port;
+  }
+
+  loadRoutes(basePath: string,  dirPath: string) {
+    const API_PATH = path.join(__dirname, dirPath);
+
+    fs.readdirSync(API_PATH).forEach((api) => {
+      const plural = pluralize(api.replace('.ts', '').replace('.js', ''));
+
+      if (plural.indexOf('.') === -1 && plural !== '__tests__') {
+        this.server.use(`/${basePath}/${plural}`, require(`${API_PATH}/${api}`));
+      }
+    });
+
+    return this;
   }
 
   all(path: string, callback:any) {

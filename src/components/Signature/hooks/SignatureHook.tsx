@@ -1,4 +1,6 @@
-import {useRef} from 'react'
+import {useRef} from 'react';
+
+import {parseImgToFile} from '../../../utils/image'
 
 function SignatureHook(store: any) {
   const signatureRef = useRef(null);
@@ -7,8 +9,9 @@ function SignatureHook(store: any) {
     const siganture: any = signatureRef.current;
 
     const img = siganture.toDataURL("image/png");
+    const contentType = 'image/png';
     siganture.clear();
-    store.save(img)
+    store.save(parseImgToFile(img, contentType))
   }
 
   return {
