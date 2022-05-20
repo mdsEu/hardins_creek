@@ -23,7 +23,7 @@ function ModalAgeGate(props: any) {
   } = useModalAgeGateHook(props.open, props.storeAction)
 
   if(!props.open) {
-    return <>aa</>;
+    return <></>;
   }
 
   return (
