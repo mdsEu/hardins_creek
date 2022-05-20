@@ -5,6 +5,7 @@ import SignaturePad from 'react-signature-pad-wrapper';
 import styles from '../../styles/Signature.module.scss';
 
 import signatureHook from "./hooks/SignatureHook";
+import { asset } from '../../helpers';
 
 function Signature(props: any) {
   const {
@@ -48,7 +49,7 @@ function Signature(props: any) {
           }
         </label>
       </div>
-      <button className="btn_transparent" onClick={saveImg}>SUBMIT <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="15.8104" cy="15.8427" r="15.7772" /><path d="M19.918 17.4494L20.5829 16.7844H19.6426H9.63852V15.3708H19.6426H20.5829L19.918 14.7059L17.4919 12.2798L18.4915 11.2802L23.2889 16.0776L18.4915 20.875L17.4919 19.8755L19.918 17.4494Z" strokeWidth="0.778996"/></svg></button>
+      <button className="btn_transparent" onClick={saveImg}>SUBMIT <img src={asset('images/page-signature/arrow_submit.png')} /></button>
     </div>
   )
 }

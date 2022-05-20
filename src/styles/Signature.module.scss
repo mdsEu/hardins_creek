@@ -100,6 +100,9 @@
       background-color: var(--text-primary-color);
       width: calc(100% - 28px);
     }
+    img {
+      width: 18px;
+    }
     svg {
       circle {
         fill: var(--text-primary-color);
