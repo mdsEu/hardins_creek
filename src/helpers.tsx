@@ -1,5 +1,6 @@
 
-export const asset = (pathAsset: string) => {
+export const asset = (pathAsset: string) : string => {
+  console.log(process.env.NEXT_PUBLIC_APP_URL)
   let env = process.env.NEXT_PUBLIC_ENV;
   return `${env === 'local' ? '' : process.env.NEXT_PUBLIC_APP_URL }/${pathAsset}`;
 }
