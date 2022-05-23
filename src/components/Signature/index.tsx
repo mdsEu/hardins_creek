@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
 import SignaturePad from 'react-signature-pad-wrapper';
@@ -38,8 +39,8 @@ function Signature(props: any) {
           </div>
       </div>
       <div className={styles.wrap_accept_terms}>
-        <label className={[isErrorTerms ? styles.error : '']}>
-          <input type="checkbox" name="" id="" value={acceptedTerms} onChange={onChangeTerms} />
+        <label className={isErrorTerms ? styles.error : ''}>
+          <input type="checkbox" name="" id="" value={acceptedTerms ? "true" : "false"} onChange={onChangeTerms} />
           <span className={styles.icon_check}>
             <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </span>
@@ -49,7 +50,7 @@ function Signature(props: any) {
           }
         </label>
       </div>
-      <button className="btn_transparent" onClick={saveImg}>SUBMIT <img src={asset('images/page-signature/arrow_submit.png')} /></button>
+      <button className="btn_transparent" onClick={saveImg}>SUBMIT <img src={asset('images/page-signature/arrow_submit.png')} alt={'arrow submit'}/></button>
     </div>
   )
 }
