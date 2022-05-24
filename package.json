@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "nodemon ./src/index.ts",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start",
     "lint": "next lint",
-    "prod": "next build & next start -p $PORT",
+    "prod": "next build & next start",
     "test": "jest --testEnvironment=node --runInBand ./src"
   },
   "engines":{
