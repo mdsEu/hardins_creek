@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const actions = {
-  addBodyClass: (nameCssClass : string) => ({ getState, setState }) => {
+  addBodyClass: (nameCssClass : string) => ({ getState, setState } : {getState: any, setState: any}) => {
     const currentClasses = getState().bodyClasses;
     if(currentClasses.indexOf(nameCssClass) === -1) {
       currentClasses.push(nameCssClass);
@@ -27,7 +27,7 @@ const actions = {
       });
     }
   },
-  removeBodyClass: (nameCssClass : string) => ({ getState, setState }) => {
+  removeBodyClass: (nameCssClass : string) => ({ getState, setState } : {getState: any, setState: any}) => {
     const currentClasses = getState().bodyClasses;
     const indexFound = currentClasses.indexOf(nameCssClass);
     if(indexFound !== -1) {
