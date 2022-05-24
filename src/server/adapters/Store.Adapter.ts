@@ -23,7 +23,7 @@ class StoreAdapter {
     return async (body: Buffer) : Promise<any> => {
       try {
         const parameters = this.getBucketParams(name, body, contentType)
-        const data = this.s3.upload(parameters).promise();
+        const data = await this.s3.upload(parameters).promise();
 
         return data;
       } catch(e) {
