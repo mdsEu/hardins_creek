@@ -1,0 +1,118 @@
+@import './variables.scss';
+
+.comp_signature {
+
+  .canvasWrapper {
+    border: 2px solid var(--text-primary-color);
+    height: 200px;
+    margin-bottom: 20px;
+    .clear_panel {
+      height: 200px - (160px + 2px + 5px);
+      padding: 5px 0;
+      margin: 0 auto 0 auto;
+      display: table;
+      text-align: right;
+      border-top: 2px solid var(--text-primary-color);
+      width: 94%;
+      a {
+        @include fsize(0.9);
+        color: var(--text-primary-color);
+        text-align: right;
+      }
+    }
+  }
+
+  .wrap_accept_terms {
+    margin: 0 auto 20px auto;
+    padding: 0 4%;
+    display: table;
+    label {
+      display: block;
+      position: relative;
+      color: var(--text-primary-color);
+      font-family: var(--font-benguiat_pro);
+      font-style: italic;
+      letter-spacing: 1px;
+      &.error {
+        text-decoration: underline;
+        text-decoration-color: var(--text-color-error);
+
+        @include breakpointSmMin() {
+          text-decoration: none;
+        }
+      }
+      @include breakpointSmMin() {
+        display: flex;
+        justify-content: center;
+      }
+      input[type="checkbox"] {
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        &:checked + .icon_check {
+          background-color: var(--text-primary-color);
+          svg {
+            display: block;
+          }
+        }
+        &:focus-visible + .icon_check {
+          outline: var(--text-primary-color) dashed 1px;
+          outline-offset: 2px;
+        }
+      }
+      .icon_check {
+        float: left;
+        margin-right: 10px;
+        border: 2px solid var(--text-primary-color);
+        display: block;
+        height: 20px;
+        width: 20px;
+        svg {
+          display: none;
+          fill: var(--bg-primary-color);
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .error_terms {
+        display: none;
+        position: absolute;
+        left: 30px;
+        bottom: -3px;
+        background-color: var(--text-color-error);
+        height: 1px;
+        width: calc(100% - 30px);
+        @include breakpointSmMin() {
+          display: block;
+        }
+      }
+    }
+  }
+
+  button {
+    border-bottom: 0;
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: var(--text-primary-color);
+      width: calc(100% - 28px);
+    }
+    img {
+      width: 18px;
+    }
+    svg {
+      circle {
+        fill: var(--text-primary-color);
+      }
+      path {
+        fill: #0B1319;
+        stroke: #0B1319;
+      }
+    }
+  }
+
+}
+

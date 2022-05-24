@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.trimTrailingWhitespace": true,
+    	"editor.tabSize": 2,
+		"editor.insertSpaces": true,
+		"files.insertFinalNewline": true,
+		"editor.detectIndentation": false,
+		"eslint.validate": [
+			"javascript",
+			"typescript"
+		],
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
