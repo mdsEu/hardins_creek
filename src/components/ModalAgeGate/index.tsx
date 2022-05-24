@@ -69,7 +69,7 @@ function ModalAgeGate(props: any) {
           <div className={styles.wrap_remember_me}>
             <label>
               REMEMBER ME
-              <input type="checkbox" name="remember_me" onChange={onChangeRememberMe} value={rememberMe}/>
+              <input type="checkbox" name="remember_me" onChange={onChangeRememberMe} value={rememberMe ? 'true' : 'false'}/>
               <span className={styles.icon_check}>
                 <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
               </span>
