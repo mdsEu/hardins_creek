@@ -1,10 +1,12 @@
 // Dependencies
-import mongoose from "mongoose";
+import mongoose, {ConnectOptions} from "mongoose";
 import config from '../config';
 
 
 // make the connection with db with the URL from config
-mongoose.connect(config.DB.URL);
+mongoose.connect(config.DB.URL, {
+  useUnifiedTopology: false
+} as ConnectOptions);
 
 const connection = mongoose.connection;
 
