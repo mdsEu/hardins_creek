@@ -13,11 +13,13 @@ export function transparentBackground(mimetype: string, backgroundColor = 'white
         .transparent(backgroundColor)
         .toBuffer(mimetype, (err, buffer) => {
           if (err) {
+            console.log(err);
             reject(err);
           }
           fulfill(buffer);
         });
       } catch (err) {
+        console.log(err);
         reject(err);
       }
     })
