@@ -24,10 +24,7 @@ const upload = (fileName: string) => {
         location: data.Location
       };
     } catch (e) {
-      console.log(e)
-      return res.json({
-        errorMessage: `This image cannot be uploaded`
-      })
+      return res.json(e)
     }
 
     next();
