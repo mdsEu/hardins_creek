@@ -1,6 +1,5 @@
 
 export const asset = (pathAsset: string) : string => {
-  console.log(process.env)
   return `${process.env.NEXT_PUBLIC_APP_URL}/${pathAsset}`;
 }
 
