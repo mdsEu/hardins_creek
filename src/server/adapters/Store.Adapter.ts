@@ -24,7 +24,7 @@ class StoreAdapter {
       try {
         const parameters = this.getBucketParams(name, body, contentType)
         const data = await this.s3.upload(parameters).promise();
-
+        console.log(data, 's3')
         return data;
       } catch(e) {
         console.log(e);
