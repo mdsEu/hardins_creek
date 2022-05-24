@@ -20,6 +20,6 @@ export default {
     AWS_S3_REGION
   },
   DB: {
-    URL: `mongodb://${MONGO_USERNAME}:${encodeURIComponent(MONGO_PASSWORD as string)}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`
+    URL: `mongodb://${MONGO_USERNAME}:${encodeURIComponent(MONGO_PASSWORD as string)}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=${MONGO_DB}&readPreference=primary&directConnection=true&ssl=false`
   }
 };
