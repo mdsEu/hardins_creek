@@ -13,10 +13,8 @@ const upload = (fileName: string) => {
       const file = files[fileName];
       const newName = `${Date.now().toString()}_${file.name}`;
       //Pre-process to convert the image to a transparent background image
-      const data : any = await utils.compose.pipe(
-        await utils.image.transparentBackground(utils.image.getType(file.mimetype)),
-        await storeAdapter.saveFile(newName, file.mimetype)
-      )(file.data)
+      const imageWithBackgrpund =  await utils.image.transparentBackground(utils.image.getType(file.mimetype))(file.data)
+      const data : any = await storeAdapter.saveFile(newName, file.mimetype)(imageWithBackgrpund)
 
       req.file = {
         ...file,
