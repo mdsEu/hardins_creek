@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./src/index.ts",
-    "prestart": "next build",
-    "build": "next build",
-    "start": "NODE_ENV=production ts-node ./src/index.ts",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "next build",
+    "dev": "nodemon ./src//server/index.ts",
+    "prestart": "npm run build:next && npm run build:server",
+    "build": "npm run build:next && npm run build:server",
+    "start": "NODE_ENV=production node ./dist/index.js",
     "lint": "next lint",
     "prod": "next build & next start",
     "test": "jest --testEnvironment=node --runInBand ./src"
