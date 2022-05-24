@@ -7,7 +7,7 @@
     "build:next": "next build",
     "dev": "nodemon ./src/server/index.ts",
     "build": "npm run build:next && npm run build:server",
-    "start": "NODE_ENV=production node ./dist/index.js",
+    "start": "NODE_ENV=production node ./index.js",
     "lint": "next lint",
     "prod": "next build & next start",
     "test": "jest --testEnvironment=node --runInBand ./src"
