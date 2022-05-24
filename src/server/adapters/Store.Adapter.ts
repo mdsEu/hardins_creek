@@ -22,13 +22,11 @@ class StoreAdapter {
   saveFile(name:string,  contentType : string) : any{
     return async (body: Buffer) : Promise<any> => {
       try {
-        console.log(body, 's3')
         const parameters = this.getBucketParams(name, body, contentType);
         const data = await this.s3.upload(parameters).promise();
 
         return data;
       } catch(e) {
-        console.log(e);
         throw e;
       }
     }
