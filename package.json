@@ -10,6 +10,10 @@
     "prod": "next build & next start -p $PORT",
     "test": "jest --testEnvironment=node --runInBand ./src"
   },
+  "engines":{
+    "node": "<=v16.14.2",
+    "npm": "<=8.5.0"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.88.0",
     "@types/multer": "^1.4.7",
