@@ -5,10 +5,10 @@
 import next from 'next';
 import cors from 'cors';
 import morgan from 'morgan';
-import './server/db/connection'
-import * as utils from './server/utils';
+import './db/connection'
+import * as utils from './utils';
 import express, { Request, Response } from "express";
-import Express from './server/serverHandler/Express';
+import Express from './serverHandler/Express';
 import fileUpload from 'express-fileupload';
 
 const port = utils.server.getPortNumber();
