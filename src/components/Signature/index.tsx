@@ -29,7 +29,7 @@ function Signature(props: any) {
           options={{
             minWidth: 5,
             maxWidth: 10,
-            penColor: 'rgb(66, 133, 244)'
+            penColor: '#D3C3A2'
           }} />
           <div className={styles.clear_panel}>
             <a href="#clear" onClick={(e) => {

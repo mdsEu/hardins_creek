@@ -17,8 +17,6 @@ function ModalAgeGate(props: any) {
     onChangeMonth,
     year,
     onChangeYear,
-    rememberMe,
-    onChangeRememberMe,
     onClickButtonSubmitAge,
     messageError,
   } = useModalAgeGateHook(props.open, props.storeAction)
