@@ -21,7 +21,7 @@ const SignaturePage: NextPage = () => {
         <div className={styles.wrap_content}>
           <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo_hardinscreek.png')} />
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
-          <p>Your signature will be displayed among the first to taste Hardin´s Creek</p>
+          <p>Your signature will be displayed among the first to taste Hardin´s Creek.</p>
           <Signature storeAction={ imgAction }/>
         </div>
       </div>
