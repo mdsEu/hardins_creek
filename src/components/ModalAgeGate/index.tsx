@@ -9,6 +9,8 @@ import useModalAgeGateHook from "./hooks/ModalAgeGateHook";
 
 import {asset} from '../../helpers';
 
+import logo from '../../../public/images/modal-age-gate/logo_hardinscreek.png';
+
 function ModalAgeGate(props: any) {
   const {
     day,
@@ -32,7 +34,7 @@ function ModalAgeGate(props: any) {
         <div className={styles.padder}>
           <div className={styles.wrap_logo}>
             <Image
-              src={asset('images/modal-age-gate/logo.png')}
+              src={logo}
               alt="Hardin's Creek"
               width={180}
               height={41.7}
