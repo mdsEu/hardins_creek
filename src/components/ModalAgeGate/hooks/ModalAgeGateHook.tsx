@@ -1,4 +1,5 @@
 import {useRef, useState, useEffect} from 'react'
+import { useRouter } from 'next/router';
 import moment from 'moment';
 
 import {
@@ -9,13 +10,11 @@ import {
 const regexOnlyNumbers = /^\d+$/;
 
 function ModalAgeGateHook(open: boolean, actionsDocument: any) {
-  const signatureRef = useRef(null);
-
+  const router = useRouter();
   const [messageError, setMessageError] = useState('');
   const [day, setDay] = useState(getLocalStorageByKey('age_gate__day'));
   const [month, setMonth] = useState(getLocalStorageByKey('age_gate__month'));
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
-  const [rememberMe, setRememberMe] = useState(false);
   const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
 
 
@@ -72,10 +71,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
   };
 
-  const onChangeRememberMe = () => {
-    setRememberMe(!rememberMe);
-  };
-
   const onClickButtonSubmitAge = () => {
     const tempYear = isNaN(parseInt(year)) ? '' : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? '' : parseInt(month);
@@ -93,15 +88,9 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       return;
     }
 
-    if(rememberMe) {
-      setLocalStorageByKey('age_gate__day', day);
-      setLocalStorageByKey('age_gate__month', month);
-      setLocalStorageByKey('age_gate__year', year);
+    if (isValidBirthDate) {
+      router.push('/signature')
     }
-    /**
-     * ToDO:
-     * Submit button action here
-     */
   };
 
 
@@ -122,8 +111,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     onChangeMonth,
     year,
     onChangeYear,
-    rememberMe,
-    onChangeRememberMe,
     onClickButtonSubmitAge,
     messageError,
   };
