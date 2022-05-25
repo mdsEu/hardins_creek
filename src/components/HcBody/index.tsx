@@ -6,7 +6,7 @@ function HcBody(props: any) {
   const [stateDocument] = documentStore();
 
   return (
-    <div className={stateDocument.strBodyClasses}>
+    <div className={stateDocument.strBodyClasses as string}>
       <div>{props.children}</div>
     </div>
   )

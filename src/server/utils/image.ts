@@ -15,6 +15,7 @@ export function transparentBackground(mimetype: string, backgroundColor = 'white
           if (err) {
             reject(err);
           }
+
           fulfill(buffer);
         });
       } catch (err) {

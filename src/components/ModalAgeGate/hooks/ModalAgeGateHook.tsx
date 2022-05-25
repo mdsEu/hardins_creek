@@ -16,7 +16,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   const [month, setMonth] = useState(getLocalStorageByKey('age_gate__month'));
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
   const [rememberMe, setRememberMe] = useState(false);
-  const [timerYearDay, setTimerYearDay] = useState(0);
+  const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
 
 
   const onChangeDay = (val: any) => {
@@ -33,7 +33,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       return;
     }
     setMessageError('');
-    setDay(dayNumber);
+    setDay(dayNumber.toString());
   };
 
   const onChangeMonth = (val: any) => {
@@ -46,7 +46,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       setMonth('');
       return;
     }
-    setMonth(monthNumber);
+    setMonth(monthNumber.toString());
     onChangeDay(day);
   };
 
@@ -62,11 +62,12 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       yearNumber = currentYear;
     }
 
-    setYear(yearNumber);
+    setYear(yearNumber.toString());
     clearTimeout(timerYearDay)
     const toutYear = setTimeout(() => {
       onChangeDay(day);
     }, 1500);
+
     setTimerYearDay(toutYear)
 
   };
@@ -111,6 +112,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     } else {
       actionsDocument.removeBodyClass('overflow_hidden');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   return {
