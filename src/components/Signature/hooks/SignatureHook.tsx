@@ -21,12 +21,16 @@ function SignatureHook(store: any) {
     signature.clear();
 
     store.save(parseImgToFile(img, CONTENT_TYPE))
+
+    setAcceptedTerms(false);
   }
 
   const cleanPad = () => {
     const signature: any = signatureRef && signatureRef.current;
 
     signature.clear();
+
+    setAcceptedTerms(false);
   }
 
   const onChangeTerms = () => {

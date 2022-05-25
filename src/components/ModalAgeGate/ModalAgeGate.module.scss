@@ -27,12 +27,14 @@
   .padder {
     width: 100%;
     .wrap_logo {
-      margin-bottom: 60px;
+      margin: 0 auto;
+      width: 303px;
+      height: 69px;
       img {
         display: table;
         margin: 0 auto;
         width: 100%;
-        max-width: 120px;
+        max-width: 180px;
       }
     }
     .wrap_text_james {
@@ -53,6 +55,25 @@
         @include fsize(2.5);
       }
     }
+    & > h4 {
+      text-align: center;
+      margin: 5px 0 30px 0;
+      span.title__primary {
+        font-family: var(--font-primary);
+        color: var(--text-primary-color);
+        text-align: center;
+        @include fsize(2.7);
+      }
+      span.title__secondary {
+        font-family: var(--font-benguiat_pro);
+        color: var(--text-primary-color);
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        letter-spacing: 1px;
+        @include fsize(1.4);
+      }
+    }
     & > label {
       color: var(--text-primary-color);
       text-align: center;
@@ -63,7 +84,7 @@
       text-align: center;
     }
     .container_input {
-      margin-bottom: 15px;
+      margin-bottom: 50px;
       width: 100%;
       .wrap_inputs {
         display: flex;
@@ -73,7 +94,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 80px;
+          height: 100px;
           width: 33.33333%;
           .dots {
             position: relative;
