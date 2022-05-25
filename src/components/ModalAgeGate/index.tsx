@@ -33,7 +33,12 @@ function ModalAgeGate(props: any) {
       <div className={styles.panel}>
         <div className={styles.padder}>
           <div className={styles.wrap_logo}>
-            <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo_hardinscreek.png')} />
+            <Image
+              src={asset('images/modal-age-gate/logo.png')}
+              alt="Hardin's Creek"
+              width={180}
+              height={41.7}
+            />
           </div>
 
           <h4>
