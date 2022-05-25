@@ -27,12 +27,14 @@
   .padder {
     width: 100%;
     .wrap_logo {
-      margin-bottom: 60px;
+      margin: 0 auto;
+      width: 303px;
+      height: 69px;
       img {
         display: table;
         margin: 0 auto;
         width: 100%;
-        max-width: 120px;
+        max-width: 180px;
       }
     }
     .wrap_text_james {
