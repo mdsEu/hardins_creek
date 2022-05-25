@@ -27,9 +27,9 @@ function Signature(props: any) {
           ref={signatureRef}
           height={160}
           options={{
-            minWidth: 5,
-            maxWidth: 10,
-            penColor: 'rgb(66, 133, 244)'
+            minWidth: 1.5,
+            maxWidth: 3.5,
+            penColor: '#D3C3A2'
           }} />
           <div className={styles.clear_panel}>
             <a href="#clear" onClick={(e) => {
@@ -40,7 +40,7 @@ function Signature(props: any) {
       </div>
       <div className={styles.wrap_accept_terms}>
         <label className={isErrorTerms ? styles.error : ''}>
-          <input type="checkbox" name="" id="" value={acceptedTerms ? "true" : "false"} onChange={onChangeTerms} />
+          <input type="checkbox" name="" id="" defaultValue={acceptedTerms ? "true" : "false"} checked={acceptedTerms} onChange={onChangeTerms} />
           <span className={styles.icon_check}>
             <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </span>

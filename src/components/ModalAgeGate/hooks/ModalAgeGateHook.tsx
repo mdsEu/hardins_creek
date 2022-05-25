@@ -1,4 +1,5 @@
-import {useRef, useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
+import { useRouter } from 'next/router';
 import moment from 'moment';
 
 import {
@@ -9,13 +10,11 @@ import {
 const regexOnlyNumbers = /^\d+$/;
 
 function ModalAgeGateHook(open: boolean, actionsDocument: any) {
-  const signatureRef = useRef(null);
-
+  const router = useRouter();
   const [messageError, setMessageError] = useState('');
   const [day, setDay] = useState(getLocalStorageByKey('age_gate__day'));
   const [month, setMonth] = useState(getLocalStorageByKey('age_gate__month'));
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
-  const [rememberMe, setRememberMe] = useState(false);
   const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
 
 
@@ -72,36 +71,31 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
   };
 
-  const onChangeRememberMe = () => {
-    setRememberMe(!rememberMe);
-  };
-
   const onClickButtonSubmitAge = () => {
     const tempYear = isNaN(parseInt(year)) ? '' : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? '' : parseInt(month);
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Birth date invalid.');
       return;
     }
 
     const ageMoment = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD');
     const isValidBirthDate = ageMoment.isValid();
     if(!isValidBirthDate) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Birth date invalid.');
       return;
     }
 
-    if(rememberMe) {
-      setLocalStorageByKey('age_gate__day', day);
-      setLocalStorageByKey('age_gate__month', month);
-      setLocalStorageByKey('age_gate__year', year);
+    if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
+      setMessageError('The age should be greater than 21 years old.');
+      return;
     }
-    /**
-     * ToDO:
-     * Submit button action here
-     */
+
+    if (isValidBirthDate) {
+      router.push('/signature');
+    }
   };
 
 
@@ -122,8 +116,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     onChangeMonth,
     year,
     onChangeYear,
-    rememberMe,
-    onChangeRememberMe,
     onClickButtonSubmitAge,
     messageError,
   };

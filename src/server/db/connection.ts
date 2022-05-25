@@ -7,8 +7,6 @@ import config from '../config';
 mongoose.connect(config.DB.URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
     user: config.DB.MONGO_USERNAME,
     pass: config.DB.MONGO_PASSWORD,
     dbName: config.DB.MONGO_DB

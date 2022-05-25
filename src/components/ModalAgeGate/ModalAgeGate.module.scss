@@ -21,18 +21,22 @@
   padding: 6% 6% 1.5% 6%;
   background-color: var(--bg-primary-color);
   border: 2px solid var(--text-primary-color);
-  max-width: 700px;
+  max-width: 784px;
   width: 98%;
   z-index: 1001;
+  max-height: 62vh;
+  height: 80%;
   .padder {
     width: 100%;
     .wrap_logo {
-      margin-bottom: 60px;
+      margin: 0 auto;
+      height: 69px;
+      overflow: hidden;
+      text-align: center;
       img {
         display: table;
         margin: 0 auto;
         width: 100%;
-        max-width: 120px;
       }
     }
     .wrap_text_james {
@@ -53,6 +57,25 @@
         @include fsize(2.5);
       }
     }
+    & > h4 {
+      text-align: center;
+      margin: 5px 0 50px 0;
+      span.title__primary {
+        font-family: var(--font-primary);
+        color: var(--text-primary-color);
+        text-align: center;
+        @include fsize(3);
+      }
+      span.title__secondary {
+        font-family: var(--font-benguiat_pro);
+        color: var(--text-primary-color);
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        letter-spacing: 1px;
+        @include fsize(1.6);
+      }
+    }
     & > label {
       color: var(--text-primary-color);
       text-align: center;
@@ -63,7 +86,7 @@
       text-align: center;
     }
     .container_input {
-      margin-bottom: 15px;
+      margin-bottom: 84px;
       width: 100%;
       .wrap_inputs {
         display: flex;
@@ -73,7 +96,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 80px;
+          height: 100px;
           width: 33.33333%;
           .dots {
             position: relative;
@@ -204,7 +227,7 @@
       }
       .text_terms {
         margin: 0;
-        @include fsize(0.5);
+        @include fsize(0.6);
         color: var(--text-primary-color);
         a {
           &:hover {
