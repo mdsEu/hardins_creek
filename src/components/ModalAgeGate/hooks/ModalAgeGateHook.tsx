@@ -78,14 +78,14 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Birth date invalid.');
+      setMessageError('Invalid date.');
       return;
     }
 
     const ageMoment = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD');
     const isValidBirthDate = ageMoment.isValid();
     if(!isValidBirthDate) {
-      setMessageError('Birth date invalid.');
+      setMessageError('Invalid date');
       return;
     }
 
