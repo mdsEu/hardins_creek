@@ -27,8 +27,8 @@ function Signature(props: any) {
           ref={signatureRef}
           height={160}
           options={{
-            minWidth: 5,
-            maxWidth: 10,
+            minWidth: 1.5,
+            maxWidth: 3.5,
             penColor: '#D3C3A2'
           }} />
           <div className={styles.clear_panel}>

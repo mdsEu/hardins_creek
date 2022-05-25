@@ -80,7 +80,7 @@ function ModalAgeGate(props: any) {
           </div>
           <div className={styles.wrap_logo_foot}>
             <img alt="drink smart" src={asset('images/modal-age-gate/drink_smart.png')} />
-            <p className={styles.text_terms}>BY ENTERING, YOU AGREE TO OUR <a href="#terms" target="_blank">TERMS AND CONDITIONS & PRIVACY POLICY</a></p>
+            <p className={styles.text_terms}>BY ENTERING, YOU AGREE TO OUR <a href="#terms" target="_blank">TERMS AND CONDITIONS & PRIVACY POLICY</a>.</p>
           </div>
         </div>
       </div>
