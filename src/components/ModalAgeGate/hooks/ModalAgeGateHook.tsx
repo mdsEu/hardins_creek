@@ -90,7 +90,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     }
 
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
-      setMessageError('The age should be greater than 21 years old.');
+      setMessageError('You must be over 21 to participate.');
       return;
     }
 
