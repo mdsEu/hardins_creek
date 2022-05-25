@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
@@ -77,19 +77,24 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Birth date invalid.');
       return;
     }
 
     const ageMoment = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD');
     const isValidBirthDate = ageMoment.isValid();
     if(!isValidBirthDate) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Birth date invalid.');
+      return;
+    }
+
+    if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
+      setMessageError('The age should be greater than 21 years old.');
       return;
     }
 
     if (isValidBirthDate) {
-      router.push('/signature')
+      router.push('/signature');
     }
   };
 
