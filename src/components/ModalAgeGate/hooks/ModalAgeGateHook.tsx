@@ -31,7 +31,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       setDay('');
       return;
     }
-    setMessageError('');
+
     setDay(dayNumber.toString());
   };
 
@@ -72,6 +72,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   };
 
   const onClickButtonSubmitAge = () => {
+    setMessageError('');
     const tempYear = isNaN(parseInt(year)) ? '' : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? '' : parseInt(month);
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
