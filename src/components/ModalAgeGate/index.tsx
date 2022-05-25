@@ -34,11 +34,17 @@ function ModalAgeGate(props: any) {
           <div className={styles.wrap_logo}>
             <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo_hardinscreek.png')} />
           </div>
-          <div className={styles.wrap_text_james}>
-            <img alt="James B. Bean Distilling C." src={asset('images/modal-age-gate/title_james.png')} />
-          </div>
 
-          <h3>It All Starts Here</h3>
+          <h4>
+            <div>
+              <span className={styles.title__secondary}>A </span>
+              <span className={styles.title__primary}>227 Year Legacy </span>
+              <span className={styles.title__secondary}> has a</span>
+            </div>
+            <div>
+              <span className={styles.title__secondary}>21 year age requirement.</span>
+            </div>
+          </h4>
           <label>ENTER YOUR BIRTH DATE</label>
           {messageError && <p className="text_error">{messageError}</p>}
           <div className={styles.container_input}>
