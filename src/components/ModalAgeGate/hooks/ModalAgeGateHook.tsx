@@ -24,9 +24,11 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       setDay('');
       return;
     }
+
     const tempYear = isNaN(parseInt(year)) ? 2000 : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? 1 : parseInt(month);
     const isValidBirthDate = moment(`${tempYear}-${tempMonth}-${dayNumber}`, 'YYYY-MM-DD').isValid();
+
     if(!isValidBirthDate) {
       setDay('');
       return;
