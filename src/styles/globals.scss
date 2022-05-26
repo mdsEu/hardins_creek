@@ -1,6 +1,8 @@
 @import './variables.scss';
 
 @import url(https://use.typekit.net/khv8yjg.css);
+
+
 @font-face {
   font-family: "Creek Sans";
   src: url("../../public/fonts/CreekSans_W_Rg.woff2") format("woff2"),
@@ -21,6 +23,7 @@ body {
   margin: 0;
   font-family: var(--font-primary);
   letter-spacing: 2px;
+  overflow: hidden;
 }
 
 a {
