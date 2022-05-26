@@ -78,7 +78,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Invalid date.');
+      setMessageError('Invalid date');
       return;
     }
 
@@ -90,7 +90,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     }
 
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
-      setMessageError('You must be over 21 to participate.');
+      setMessageError('You must be over 21 to participate');
       return;
     }
 
