@@ -7,11 +7,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  left: 0%;
-  top: 0;
   height: 100vh;
   width: 100vw;
   z-index: 1000;
+  overflow: hidden;
 }
 .panel {
   position: absolute;
@@ -24,8 +23,7 @@
   max-width: 784px;
   width: 98%;
   z-index: 1001;
-  max-height: 62vh;
-  height: 80%;
+  height: 78%;
   .padder {
     width: 100%;
     .wrap_logo {
@@ -86,7 +84,7 @@
       text-align: center;
     }
     .container_input {
-      margin-bottom: 84px;
+      margin-bottom: 68px;
       width: 100%;
       .wrap_inputs {
         display: flex;
