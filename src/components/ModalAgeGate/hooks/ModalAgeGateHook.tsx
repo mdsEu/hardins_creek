@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
@@ -31,7 +31,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
       setDay('');
       return;
     }
-    setMessageError('');
+
     setDay(dayNumber.toString());
   };
 
@@ -72,24 +72,30 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   };
 
   const onClickButtonSubmitAge = () => {
+    setMessageError('');
     const tempYear = isNaN(parseInt(year)) ? '' : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? '' : parseInt(month);
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Invalid date.');
       return;
     }
 
     const ageMoment = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD');
     const isValidBirthDate = ageMoment.isValid();
     if(!isValidBirthDate) {
-      setMessageError('Birthdate invalid.');
+      setMessageError('Invalid date');
+      return;
+    }
+
+    if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
+      setMessageError('You must be over 21 to participate.');
       return;
     }
 
     if (isValidBirthDate) {
-      router.push('/signature')
+      router.push('/signature');
     }
   };
 
