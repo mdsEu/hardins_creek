@@ -21,7 +21,6 @@ function Signature(props: any) {
 
   return (
     <div className={styles.comp_signature}>
-
       <div className={styles.canvasWrapper}>
         <SignaturePad
           ref={signatureRef}
