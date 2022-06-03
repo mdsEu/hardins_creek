@@ -9,6 +9,8 @@ import signatureHook from "./hooks/SignatureHook";
 import { asset } from '../../helpers';
 
 function Signature(props: any) {
+  const { storeAction, setSignature } = props;
+  
   const {
     isErrorTerms,
     acceptedTerms,
@@ -17,7 +19,8 @@ function Signature(props: any) {
     saveImg,
     cleanPad,
     onChangeTerms,
-  } = signatureHook(props.storeAction)
+    alertSignatureEmpty,
+  } = signatureHook(storeAction, setSignature)
 
   return (
     <div className={styles.comp_signature}>
@@ -30,11 +33,11 @@ function Signature(props: any) {
             maxWidth: 3.5,
             penColor: '#D3C3A2'
           }} />
-          <div className={styles.clear_panel}>
+          <div className={`${styles.clear_panel} ${alertSignatureEmpty && styles.error}`}>
             <a href="#clear" onClick={(e) => {
               e.preventDefault();
               cleanPad();
-            }}>CLAER SIGNATURE</a>
+            }}>CLEAR SIGNATURE</a>
           </div>
       </div>
       <div className={styles.wrap_accept_terms}>
@@ -43,7 +46,7 @@ function Signature(props: any) {
           <span className={styles.icon_check}>
             <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </span>
-          I agree to let Hardin´s Creek display my signature on their website.
+          *I agree to let Hardin´s Creek display my signature on their website.
           {
             isErrorTerms && <div className={styles.error_terms}></div>
           }
@@ -51,14 +54,15 @@ function Signature(props: any) {
       </div>
       <button className="btn_submit" onClick={saveImg}>
         <span className="text_submit">SUBMIT</span>
-        <span className="btn_round" title="Submit">&rarr;</span>
+        <span className="btn_round" title="Submit">→</span>
       </button>
     </div>
   )
 }
 
 Signature.propTypes = {
-  storeAction: PropTypes.object
+  storeAction: PropTypes.object,
+  setSignature: PropTypes.func,
 }
 
 export default Signature

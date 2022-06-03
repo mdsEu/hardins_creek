@@ -14,13 +14,14 @@ import logo from '../../../public/images/modal-age-gate/logo_hardinscreek.png';
 function ModalAgeGate(props: any) {
   const {
     day,
-    onChangeDay,
     month,
-    onChangeMonth,
     year,
+    onChangeDayMonth,
     onChangeYear,
     onClickButtonSubmitAge,
     messageError,
+    onExitInput,
+    checkOnlyNumbers,
   } = useModalAgeGateHook(props.open, props.storeAction)
 
   if(!props.open) {
@@ -65,19 +66,43 @@ function ModalAgeGate(props: any) {
             <div className={styles.wrap_inputs}>
               <div className={styles.wrap_input}>
                 <div className={styles.dots}>
-                  <input type="number" name="month" placeholder="MONTH" onChange={(e) => onChangeMonth(e.target.value)} value={month} />
+                  <input 
+                    type="number"
+                    name="month"
+                    placeholder="MONTH"
+                    onKeyDown={checkOnlyNumbers}
+                    onChange={onChangeDayMonth}
+                    onBlur={onExitInput}
+                    value={month}
+                  />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
               <div className={styles.wrap_input}>
                 <div className={styles.dots}>
-                  <input type="number" name="day" placeholder="DAY" onChange={(e) => onChangeDay(e.target.value)} value={day} />
+                  <input
+                    type="number"
+                    name="day"
+                    placeholder="DAY"
+                    onKeyDown={checkOnlyNumbers}
+                    onChange={onChangeDayMonth}
+                    onBlur={onExitInput}
+                    value={day}
+                    maxLength={2}
+                    />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
               <div className={styles.wrap_input}>
                 <div className={styles.dots}>
-                  <input type="number" name="year" placeholder="YEAR" onChange={(e) => onChangeYear(e.target.value)} value={year} />
+                  <input 
+                    type="number"
+                    name="year"
+                    placeholder="YEAR"
+                    onKeyDown={checkOnlyNumbers}
+                    onChange={onChangeYear}
+                    value={year}
+                  />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
@@ -87,11 +112,13 @@ function ModalAgeGate(props: any) {
           </div>
           <div className={styles.wrap_logo_foot}>
             <a href={urls.drink} target="_blank" rel="noreferrer"><img alt="drink smart" src={asset('images/modal-age-gate/drink_smart.png')} /></a>
-            <p className={styles.text_terms}>BY ENTERING, YOU AGREE TO OUR 
-              <a href={urls.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a> &&nbsp;
+            <p className={styles.text_terms}>BY ENTERING, YOU AGREE TO OUR&nbsp;
+              <a href={urls.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>,&nbsp;
               <a href={urls.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
               <a href={urls.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
-              <br />DO NOT SELL MY INFORMATION.
+              <br />
+              {/* <a href="javascript:void(0);" onClick={`Optanon.ToggleInfoDisplay()`}>DO NOT SELL MY INFORMATION</a> */}
+              DO NOT SELL MY INFORMATION
               </p>
           </div>
         </div>

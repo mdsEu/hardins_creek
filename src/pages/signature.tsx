@@ -28,19 +28,13 @@ const modalSignature: IModal = {
 const SignaturePage: NextPage = () => {
   const [imgState, imgAction] = imageStore();
   const [noThanks, setNoThanks] = useState(false);
-  const [signatureRecord, setSignatureRecord] = useState(true);
+  const [signatureRecord, setSignatureRecord] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setNoThanks(true);
     },1000);
   }, []);
-
-  useEffect(() => {
-    if(imgState.images && imgState.images.length > 0) {
-      setSignatureRecord(s => !s);
-    }
-  }, [imgState]);
 
   return (
     <HcBody>
@@ -49,12 +43,12 @@ const SignaturePage: NextPage = () => {
         <div className={styles.wrap_content}>
           <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo.png')} />
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
-          <p>Your signature will be displayed among the first to taste Hardin´s Creek.</p>
-          <Signature storeAction={ imgAction }/>
+          <p>Your signature will be displayed as one of the first who have tasted Hardin´s Creek.</p>
+          <Signature storeAction={imgAction} setSignature={setSignatureRecord} />
         </div>
       </div>
 
-      {!signatureRecord && <SignatureModal modal={modalSignature} signature={setSignatureRecord} />}
+      {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} />}
       {noThanks && <SignUpModal modal={modalSignUp} noThanks={setNoThanks} />}
     </HcBody>
   )
