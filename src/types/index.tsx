@@ -6,3 +6,9 @@
   message: string,
   width: number,
 }
+
+ export interface IiFrame {
+  title: string,
+  url: string,
+  width: string,
+}
