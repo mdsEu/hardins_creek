@@ -23,7 +23,7 @@ const actions = {
     if (request.status === 200) {
       const signature = await request.json()
       console.log(signature)
-      return;
+      return signature;
     }
 
     console.log(request)

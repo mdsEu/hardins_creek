@@ -45,14 +45,15 @@
     letter-spacing: 0.8px;
     color: var(--text-primary-color);
     margin: 0 0 10px 0;
+    font-weight: 300;
   }
   & > p {
     text-align: center;
-    @include fsize(1.2);
+    @include fsize(1.1);
     color: var(--text-primary-color);
     font-family: var(--font-benguiat_pro);
     font-style: italic;
-    letter-spacing: 2.2px;
+    letter-spacing: 0.9px;
     margin: 0 0 40px 0;
   }
 }
