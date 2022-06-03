@@ -5,8 +5,8 @@ import { useState, useEffect }  from 'react';
 import styles from '../styles/SignaturePage.module.scss'
 
 import Signature from '../components/Signature';
-import { SignUpModal, SignatureModal } from '@/components/modal';
-import { IModal } from '@/types/index';
+import { SignUpModal, SignatureModal } from '../components/modal';
+import { IModal } from '../types';
 
 import imageStore from '../store/imageStore';
 import HcBody from '../components/HcBody';
