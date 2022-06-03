@@ -13,8 +13,8 @@ const upload = (fileName: string) => {
       const file = files[fileName];
       const newName = `${Date.now().toString()}_${file.name}`;
       //Pre-process to convert the image to a transparent background image
-      const imageWithBackgrpund =  await utils.image.transparentBackground(utils.image.getType(file.mimetype))(file.data)
-      const data : any = await storeAdapter.saveFile(newName, file.mimetype)(imageWithBackgrpund)
+      const imageWithoutBackground =  await utils.image.transparentBackground(utils.image.getType(file.mimetype))(file.data);
+      const data : any = await storeAdapter.saveFile(newName, file.mimetype)(imageWithoutBackground);
 
       req.file = {
         ...file,
@@ -24,7 +24,7 @@ const upload = (fileName: string) => {
     } catch (e) {
       return res.json({
         errorMessage: `This image cannot be uploaded`
-      })
+      });
     }
 
     next();

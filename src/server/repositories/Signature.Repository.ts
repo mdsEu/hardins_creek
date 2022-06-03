@@ -7,6 +7,8 @@ class SignatureRepository {
   url = "";
   approved = false;
   updatedAt!: Date;
+  limit: number = 10;
+  skip: number = 1;
 
   constructor() {
     this.signature = new SignatureModel();
@@ -27,7 +29,24 @@ class SignatureRepository {
 
   async findAll() {
     try{
-      return await SignatureModel.find()
+      return await SignatureModel
+        .find()
+        .limit(this.limit)
+        .skip(this.skip)
+        .exec();
+    } catch(e) {
+      throw "Server error on searching executed";
+
+    }
+  }
+
+  async find(searchingParameters: any) {
+    try{
+      return await SignatureModel
+        .find(searchingParameters)
+        .limit(this.limit)
+        .skip(this.skip)
+        .exec();
     } catch(e) {
       throw "Server error on searching executed";
 
@@ -46,6 +65,14 @@ class SignatureRepository {
     this.updatedAt = updatedAt;
   }
 
+  setLimit(limit: number) : void {
+    this.limit = limit;
+  }
+
+  setSkip(skip: number) : void {
+    this.skip = skip;
+  }
+
   getUrl() : string {
     return this.url;
   }
@@ -56,6 +83,19 @@ class SignatureRepository {
 
   getUpdatedAt() : Date {
     return this.updatedAt;
+  }
+
+  getLimit() : number {
+    return this.limit;
+  }
+
+  getSkip() : number {
+    return this.skip;
+  }
+
+  setPagination({limit, page}: {limit: number, page: number}) : void {
+    this.limit = limit;
+    this.skip = (page - 1) * limit;
   }
 }
 
