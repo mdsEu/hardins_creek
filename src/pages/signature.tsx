@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router';
 import { useState, useEffect }  from 'react';
 
 import styles from '../styles/SignaturePage.module.scss'
@@ -26,15 +27,24 @@ const modalSignature: IModal = {
 };
 
 const SignaturePage: NextPage = () => {
+  const router = useRouter();
   const [imgState, imgAction] = imageStore();
   const [noThanks, setNoThanks] = useState(false);
   const [signatureRecord, setSignatureRecord] = useState(false);
+  const [goAgeGate, setGoAgeGate] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setNoThanks(true);
     },1000);
   }, []);
+
+  useEffect(() => {
+    if(goAgeGate) {
+      router.push('/');
+    }
+
+  }, [goAgeGate, router]);
 
   return (
     <HcBody>
@@ -48,7 +58,7 @@ const SignaturePage: NextPage = () => {
         </div>
       </div>
 
-      {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} />}
+      {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} setGoAgeGate={setGoAgeGate} />}
       {noThanks && <SignUpModal modal={modalSignUp} noThanks={setNoThanks} />}
     </HcBody>
   )
