@@ -12,7 +12,9 @@
 }
 :root {
   --bg-primary-color: #0B1319;
+  --bg-secondary-color: #D3C3A2;
   --text-primary-color: #D3C3A2;
+  --text-secondary-color: #0B1319;
   --text-color-error: #ff0000;
   --font-primary: "Creek Sans", "sans-serif";
   --font-benguiat_pro: "itc-benguiat-condensed", Times New Roman, serif;
@@ -70,3 +72,35 @@ a {
     outline-offset: 2px;
   }
 }
+
+.btn_submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  @include fsize(1.5);
+  letter-spacing: 2px;
+  color: var(--text-primary-color);
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0 auto;
+  .text_submit {
+    vertical-align: middle;
+    border-bottom: 2px solid var(--text-primary-color);
+  }
+  .btn_round {
+    font-size: 1.2rem;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-secondary-color);
+    padding: 4px 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 10px;
+  }
+}
+

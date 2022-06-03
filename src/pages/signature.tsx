@@ -54,7 +54,7 @@ const SignaturePage: NextPage = () => {
         </div>
       </div>
 
-      {signatureRecord && <SignatureModal modal={modalSignature} signature={setSignatureRecord} />}
+      {!signatureRecord && <SignatureModal modal={modalSignature} signature={setSignatureRecord} />}
       {noThanks && <SignUpModal modal={modalSignUp} noThanks={setNoThanks} />}
     </HcBody>
   )

@@ -34,7 +34,7 @@ function Signature(props: any) {
             <a href="#clear" onClick={(e) => {
               e.preventDefault();
               cleanPad();
-            }}>CLEAR</a>
+            }}>CLAER SIGNATURE</a>
           </div>
       </div>
       <div className={styles.wrap_accept_terms}>
@@ -49,7 +49,10 @@ function Signature(props: any) {
           }
         </label>
       </div>
-      <button className="btn_transparent" onClick={saveImg}>SUBMIT <img src={asset('images/page-signature/arrow_submit.png')} alt={'arrow submit'}/></button>
+      <button className="btn_submit" onClick={saveImg}>
+        <span className="text_submit">SUBMIT</span>
+        <span className="btn_round" title="Submit">&rarr;</span>
+      </button>
     </div>
   )
 }

@@ -78,11 +78,11 @@
       .error_terms {
         display: none;
         position: absolute;
-        left: 30px;
+        left: 35px;
         bottom: -3px;
         background-color: var(--text-color-error);
         height: 1px;
-        width: calc(100% - 30px);
+        width: calc(100% - 35px);
         @include breakpointSmMin() {
           display: block;
         }
