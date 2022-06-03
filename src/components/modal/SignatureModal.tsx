@@ -6,16 +6,16 @@ import quill from '@/public/images/quill.png';
 
 type Props = { 
   modal: IModal,
-  signature: (bool: boolean) => void,
+  setSignature: (bool: boolean) => void,
 }
 
-const Modal: React.FC<Props> = ({ modal, signature }) => {
+const Modal: React.FC<Props> = ({ modal, setSignature }) => {
   // Here close the modal when has elapsed 4sec time
   useEffect(() => {
     setTimeout(() => {
-      signature(false);
+      setSignature(false);
     }, 4000);
-  }, [signature]);
+  }, [setSignature]);
 
   return (
     <div className={styles.modal__overlay}>
@@ -35,7 +35,7 @@ const Modal: React.FC<Props> = ({ modal, signature }) => {
         />
         <button
           className={`btn_transparent ${styles.modal__button}`}
-          onClick={() => signature(false)}
+          onClick={() => setSignature(false)}
           >Close</button>
       </div>
     </div>

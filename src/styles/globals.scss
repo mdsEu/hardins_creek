@@ -87,17 +87,24 @@ a {
   border: 0;
   padding: 0;
   margin: 0 auto;
+  &::after {
+    content: "";
+    display: inherit;
+    height: inherit;
+    background-color: inherit;
+    width: inherit;
+}
   .text_submit {
     vertical-align: middle;
     border-bottom: 2px solid var(--text-primary-color);
   }
   .btn_round {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     background-color: var(--bg-secondary-color);
     color: var(--text-secondary-color);
-    padding: 4px 6px;
-    width: 36px;
-    height: 36px;
+    padding: 2px 4px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     text-align: center;
     margin-left: 10px;
