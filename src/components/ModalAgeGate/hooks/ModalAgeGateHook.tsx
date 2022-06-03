@@ -7,7 +7,7 @@ import {
   getLocalStorageByKey,
 } from '../../../helpers';
 
-function ModalAgeGateHook(open: boolean, actionsDocument: any) {
+function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any) {
   const router = useRouter();
   const [messageError, setMessageError] = useState('');
   const [day, setDay] = useState(getLocalStorageByKey('age_gate__day'));
@@ -109,7 +109,9 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     }
 
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
-      setMessageError('You must be over 21 to participate');
+      // call iframe
+      setAgeError(true);
+      //setMessageError('You must be over 21 to participate');
       return;
     }
 

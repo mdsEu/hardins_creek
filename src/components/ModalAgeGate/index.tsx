@@ -12,6 +12,7 @@ import {asset} from '../../helpers';
 import logo from '../../../public/images/modal-age-gate/logo_hardinscreek.png';
 
 function ModalAgeGate(props: any) {
+  const { open, storeAction, setAgeError } = props;
   const {
     day,
     month,
@@ -22,7 +23,7 @@ function ModalAgeGate(props: any) {
     messageError,
     onExitInput,
     checkOnlyNumbers,
-  } = useModalAgeGateHook(props.open, props.storeAction)
+  } = useModalAgeGateHook(open, storeAction, setAgeError)
 
   if(!props.open) {
     return <></>;
@@ -33,6 +34,11 @@ function ModalAgeGate(props: any) {
     privacity: 'https://www.beamsuntory.com/en/privacy-policy',
     cookies: 'https://www.beamsuntory.com/en/cookie-policy',
     drink: 'https://www.drinksmart.com/',
+  }
+
+  const handleToggleDisplay = () => {
+    console.log('call Optanon function!!!');
+    //Optanon.ToggleInfoDisplay();
   }
 
   return (
@@ -117,7 +123,7 @@ function ModalAgeGate(props: any) {
               <a href={urls.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
               <a href={urls.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
               <br />
-              {/* <a href="javascript:void(0);" onClick={`Optanon.ToggleInfoDisplay()`}>DO NOT SELL MY INFORMATION</a> */}
+              <a href="javascript:void(0);" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
               DO NOT SELL MY INFORMATION
               </p>
           </div>
@@ -137,6 +143,7 @@ ModalAgeGate.propTypes = {
   withBackground: PropTypes.bool.isRequired,
   closeWithBackground: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  setAgeError: PropTypes.func.isRequired,
 }
 
 export default ModalAgeGate;
