@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from '@/styles/Modal.module.scss';
-import { IModal } from '@/types/index';
+import styles from '../../styles/Modal.module.scss';
+import { IModal } from '../../types';
 
-type Props = { 
+type Props = {
   modal: IModal,
   noThanks: (bool: boolean) => void,
 }

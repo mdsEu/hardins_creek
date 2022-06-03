@@ -5,8 +5,8 @@ import ModalAgeGate from '../components/ModalAgeGate';
 import documentStore from '../store/documentStore';
 import HcBody from '../components/HcBody';
 
-import { IFrameModal } from '@/components/modal';
-import { IiFrame } from '@/types/index';
+import { IFrameModal } from '../components/modal';
+import { IiFrame } from '../types';
 
 const Home: NextPage = () => {
   const [,actionsDocument] = documentStore();
