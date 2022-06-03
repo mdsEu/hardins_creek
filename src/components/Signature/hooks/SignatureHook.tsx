@@ -4,24 +4,37 @@ import {parseImgToFile} from '../../../utils/image'
 
 const CONTENT_TYPE = 'image/png';
 
-function SignatureHook(store: any) {
+function SignatureHook(store: any, setSignature: any) {
   const signatureRef = useRef(null);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isErrorTerms, setIsErrorTerms] = useState(false);
+  const [alertSignatureEmpty, setAlertSignatureEmpty] = useState(false);
 
-  const saveImg = () => {
+  const saveImg = async () => {
     const signature: any = signatureRef.current;
 
-    if(!acceptedTerms) {
-      setIsErrorTerms(true);
-      return;
+    if(signature.isEmpty()) {
+      setAlertSignatureEmpty(true);
+      setTimeout(() => {
+        setAlertSignatureEmpty(false);
+      }, 3000);
     }
+    
+    if(!acceptedTerms) setIsErrorTerms(true);
+
+    if(signature.isEmpty() || !acceptedTerms) return;
 
     const img = signature.toDataURL(CONTENT_TYPE);
+    
+    const response = await store.save(parseImgToFile(img, CONTENT_TYPE));
+    console.log('response _id', response._id);
+
+    // check response ahd update state modalSignature
+    if(response._id) {
+      setSignature(true);
+    }
+
     signature.clear();
-
-    store.save(parseImgToFile(img, CONTENT_TYPE))
-
     setAcceptedTerms(false);
   }
 
@@ -29,6 +42,8 @@ function SignatureHook(store: any) {
     const signature: any = signatureRef && signatureRef.current;
 
     signature.clear();
+    
+    setAlertSignatureEmpty(false);
 
     setAcceptedTerms(false);
   }
@@ -48,6 +63,7 @@ function SignatureHook(store: any) {
     saveImg,
     cleanPad,
     onChangeTerms,
+    alertSignatureEmpty,
   };
 }
 

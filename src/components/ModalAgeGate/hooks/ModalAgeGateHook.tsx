@@ -7,8 +7,6 @@ import {
   getLocalStorageByKey,
 } from '../../../helpers';
 
-const regexOnlyNumbers = /^\d+$/;
-
 function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   const router = useRouter();
   const [messageError, setMessageError] = useState('');
@@ -17,46 +15,66 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
   const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
 
+  const onExitInput = (event: any) => {
+    const { name, value } = event.target;
+    const newValue = String(value).padStart(2, '0');
 
-  const onChangeDay = (val: any) => {
-    let dayNumber = parseInt(val);
-    if(isNaN(dayNumber) || dayNumber <= 0 || !regexOnlyNumbers.test(val)) {
-      setDay('');
-      return;
+    name === 'day' ? setDay(newValue) : setMonth(newValue);
+  };
+
+  const checkOnlyNumbers = (event: any) => {
+    const keyCode = event.keyCode || event.which;
+    if (keyCode === 16 || keyCode > 31 && (keyCode < 48 || keyCode > 57)) {
+      event.preventDefault();
+      return false;
     }
+    
+    const exceptSymbols = ['e','E','+','-','.',','];
+    if (exceptSymbols.includes(event.key)) {
+      event.preventDefault();
+      return false
+    };
+    
+    return true;
+  };
 
-    const tempYear = isNaN(parseInt(year)) ? 2000 : parseInt(year);
+  const handleChangeDay = (value: any) => {
+    const tempYear  = isNaN(parseInt(year)) ? 2000 : parseInt(year);
     const tempMonth = isNaN(parseInt(month)) ? 1 : parseInt(month);
-    const isValidBirthDate = moment(`${tempYear}-${tempMonth}-${dayNumber}`, 'YYYY-MM-DD').isValid();
+    const tempDay   = parseInt(value);
+
+    const isValidBirthDate = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD').isValid();
+    console.log('isValidBirthDate', isValidBirthDate);
 
     if(!isValidBirthDate) {
       setDay('');
       return;
     }
 
-    setDay(dayNumber.toString());
+    setDay(value);
   };
 
-  const onChangeMonth = (val: any) => {
-    let monthNumber = parseInt(val);
-    if(isNaN(monthNumber) || monthNumber <= 0 || !regexOnlyNumbers.test(val)) {
-      setMonth('');
+  const onChangeDayMonth = (event: any) => {
+    const { name, value } = event.target;
+    if (value.length > 2) return;
+
+    if(name === 'month') {
+      if(parseInt(value) > 12) {
+        return;
+      }
+      setMonth(value);
+      handleChangeDay(day);
       return;
     }
-    if(monthNumber > 12) {
-      setMonth('');
-      return;
-    }
-    setMonth(monthNumber.toString());
-    onChangeDay(day);
+    
+    handleChangeDay(value);
   };
 
-  const onChangeYear = (val: any) => {
-    let yearNumber = parseInt(val);
-    if(isNaN(yearNumber) || yearNumber <= 0 || !regexOnlyNumbers.test(val)) {
-      setYear('');
-      return;
-    }
+  const onChangeYear = (event: any) => {
+    const { value } = event.target;
+    if (value.length > 4) return;
+
+    let yearNumber = parseInt(value);
 
     const currentYear = parseInt(moment().format('YYYY'));
     if(yearNumber > currentYear) {
@@ -64,13 +82,12 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     }
 
     setYear(yearNumber.toString());
-    clearTimeout(timerYearDay)
+    clearTimeout(timerYearDay);
     const toutYear = setTimeout(() => {
-      onChangeDay(day);
-    }, 1500);
+      handleChangeDay(day);
+    }, 800);
 
-    setTimerYearDay(toutYear)
-
+    setTimerYearDay(toutYear);
   };
 
   const onClickButtonSubmitAge = () => {
@@ -101,8 +118,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     }
   };
 
-
-
   useEffect(() => {
     if(open) {
       actionsDocument.addBodyClass('overflow_hidden');
@@ -114,13 +129,14 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
   return {
     day,
-    onChangeDay,
     month,
-    onChangeMonth,
     year,
+    onChangeDayMonth,
     onChangeYear,
     onClickButtonSubmitAge,
     messageError,
+    onExitInput,
+    checkOnlyNumbers,
   };
 }
 

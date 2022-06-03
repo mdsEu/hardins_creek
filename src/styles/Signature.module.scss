@@ -14,6 +14,10 @@
       text-align: right;
       border-top: 2px solid var(--text-primary-color);
       width: 94%;
+      animation: 2s linear;
+      &.error {
+        border-top: 2px solid var(--text-color-error);
+      }
       a {
         @include fsize(0.9);
         color: var(--text-primary-color);
@@ -78,11 +82,11 @@
       .error_terms {
         display: none;
         position: absolute;
-        left: 30px;
+        left: 35px;
         bottom: -3px;
         background-color: var(--text-color-error);
         height: 1px;
-        width: calc(100% - 30px);
+        width: calc(100% - 35px);
         @include breakpointSmMin() {
           display: block;
         }
@@ -90,29 +94,29 @@
     }
   }
 
-  button {
-    border-bottom: 0;
-    position: relative;
-    &::after {
-      content: "";
-      display: block;
-      height: 2px;
-      background-color: var(--text-primary-color);
-      width: calc(100% - 28px);
-    }
-    img {
-      width: 18px;
-    }
-    svg {
-      circle {
-        fill: var(--text-primary-color);
-      }
-      path {
-        fill: #0B1319;
-        stroke: #0B1319;
-      }
-    }
-  }
+  // button {
+  //   border-bottom: 0;
+  //   position: relative;
+  //   &::after {
+  //     content: "";
+  //     display: block;
+  //     height: 2px;
+  //     background-color: var(--text-primary-color);
+  //     width: calc(100% - 28px);
+  //   }
+  //   img {
+  //     width: 18px;
+  //   }
+  //   svg {
+  //     circle {
+  //       fill: var(--text-primary-color);
+  //     }
+  //     path {
+  //       fill: #0B1319;
+  //       stroke: #0B1319;
+  //     }
+  //   }
+  // }
 
 }
 
