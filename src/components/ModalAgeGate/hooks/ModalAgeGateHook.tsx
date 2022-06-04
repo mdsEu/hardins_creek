@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import moment from 'moment';
+import TagManager from 'react-gtm-module';
 
 import {
   setLocalStorageByKey,
@@ -121,6 +122,18 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
       setMessageError('Invalid date');
       return;
     }
+
+    // age gate GTM
+    const tagManagerArgs = {
+      dataLayer: {
+        event: 'e_ageGate',
+        ageGatePass: isValidBirthDate,
+        ageGateAge: `${moment().diff(ageMoment, 'years')}`,
+        ageGateYear: `${parseInt(year)}`,
+      }
+    };
+
+    TagManager.dataLayer(tagManagerArgs);
 
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
       // call iframe
