@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import styles from '@/styles/Modal.module.scss';
 import { IiFrame } from '@/types/index';
+import Image from 'next/image';
+import close from '@/public/images/cross-close.svg';
 
 type Props = { 
   modal: IiFrame,
@@ -18,12 +20,18 @@ const Modal: React.FC<Props> = ({ modal, setAgeError }) => {
           height="684px"
           src={modal.url}
           frameBorder="0"
-          // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          // allowFullScreen
+          sandbox="allow-scripts allow-same-origin"
           title={modal.title}
         />
       </div>
-      <button className={styles.close_button} onClick={(e) => setAgeError(false)}> X </button>
+      <button className={styles.close_button} onClick={(e) => setAgeError(false)}>
+      <Image
+          src={close}
+          width={20}
+          height={20}
+          alt="close"
+        />
+      </button>
     </div>
   )
 };

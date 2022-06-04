@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
@@ -14,12 +14,17 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
   const [month, setMonth] = useState(getLocalStorageByKey('age_gate__month'));
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
   const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
+  const [focus, setFocus] = useState(0);
+
+  //const inputRef = useRef<HTMLInputElement>(null);
 
   const onExitInput = (event: any) => {
     const { name, value } = event.target;
+    if(value === '') return;
     const newValue = String(value).padStart(2, '0');
 
     name === 'day' ? setDay(newValue) : setMonth(newValue);
+    // name === 'day' ? setFocus(2) : setFocus(1);
   };
 
   const checkOnlyNumbers = (event: any) => {
@@ -44,7 +49,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     const tempDay   = parseInt(value);
 
     const isValidBirthDate = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD').isValid();
-    console.log('isValidBirthDate', isValidBirthDate);
 
     if(!isValidBirthDate) {
       setDay('');
@@ -52,11 +56,13 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     }
 
     setDay(value);
+    setMessageError('');
   };
 
   const onChangeDayMonth = (event: any) => {
-    const { name, value } = event.target;
-    if (value.length > 2) return;
+    const { name, value, maxLength, id } = event.target;
+
+    if (value.length > maxLength) return;
 
     if(name === 'month') {
       if(parseInt(value) > 12) {
@@ -64,10 +70,18 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
       }
       setMonth(value);
       handleChangeDay(day);
-      return;
+      if(value.length === maxLength) {
+        setFocus(1);
+      }
     }
     
-    handleChangeDay(value);
+    if(name === 'day') {
+      handleChangeDay(value);
+      if(value.length === maxLength) {
+        setFocus(2);
+      }
+    }
+    return;
   };
 
   const onChangeYear = (event: any) => {
@@ -111,7 +125,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
       // call iframe
       setAgeError(true);
-      //setMessageError('You must be over 21 to participate');
       return;
     }
 
@@ -139,6 +152,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     messageError,
     onExitInput,
     checkOnlyNumbers,
+    focus,
   };
 }
 
