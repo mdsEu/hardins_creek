@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'
 import PropTypes from 'prop-types';
+import TagManager from 'react-gtm-module';
 
 import styles from './ModalAgeGate.module.scss';
 
@@ -53,7 +54,18 @@ function ModalAgeGate(props: any) {
 
   const handleToggleDisplay = () => {
     console.log('call Optanon function!!!');
-    //Optanon.ToggleInfoDisplay();
+    const tagManagerArgs = {
+      gtmId: 'GTM-P3XTKBJ',
+      events: {
+          event: `Optanon.ToggleInfoDisplay()`,
+      }
+    };
+    TagManager.initialize(tagManagerArgs);
+
+    if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
+      window.Optanon.ToggleInfoDisplay();
+    }
+  
   }
 
   return (
