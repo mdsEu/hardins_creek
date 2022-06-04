@@ -14,7 +14,6 @@ const Home: NextPage = () => {
   const[openModal, setOpenModal] = useState(true);
   const[ageError, setAgeError] = useState(false);
 
-
   const modalIframe: IiFrame = {
     title: 'You signature has been recorded.',
     url: 'https://www.responsibility.org/',

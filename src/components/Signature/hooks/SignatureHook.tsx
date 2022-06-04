@@ -27,8 +27,6 @@ function SignatureHook(store: any, setSignature: any) {
     const img = signature.toDataURL(CONTENT_TYPE);
     
     const response = await store.save(parseImgToFile(img, CONTENT_TYPE));
-    console.log('response _id', response._id);
-
     // check response ahd update state modalSignature
     if(response._id) {
       setSignature(true);

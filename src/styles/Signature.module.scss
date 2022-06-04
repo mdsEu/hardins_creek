@@ -82,41 +82,16 @@
       .error_terms {
         display: none;
         position: absolute;
-        left: 35px;
+        left: 42px;
         bottom: -3px;
         background-color: var(--text-color-error);
         height: 1px;
-        width: calc(100% - 35px);
+        width: calc(100% - 42px);
         @include breakpointSmMin() {
           display: block;
         }
       }
     }
   }
-
-  // button {
-  //   border-bottom: 0;
-  //   position: relative;
-  //   &::after {
-  //     content: "";
-  //     display: block;
-  //     height: 2px;
-  //     background-color: var(--text-primary-color);
-  //     width: calc(100% - 28px);
-  //   }
-  //   img {
-  //     width: 18px;
-  //   }
-  //   svg {
-  //     circle {
-  //       fill: var(--text-primary-color);
-  //     }
-  //     path {
-  //       fill: #0B1319;
-  //       stroke: #0B1319;
-  //     }
-  //   }
-  // }
-
 }
 
