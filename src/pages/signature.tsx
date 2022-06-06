@@ -8,14 +8,16 @@ import styles from '../styles/SignaturePage.module.scss'
 
 import Signature from '../components/Signature';
 import { SignUpModal, SignatureModal } from '@/components/modal';
-import { IModal } from '@/types/index';
+import { IModal } from '../customTypes';
 
 import imageStore from '../store/imageStore';
 import HcBody from '../components/HcBody';
 
 import { asset, URLS } from '../helpers';
+import {handleToggleDisplay} from '@/utils/optanonFunction';
 
-import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
+import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';;
+
 
 const modalSignUp: IModal = {
   title: null,
@@ -33,7 +35,7 @@ const handleToggleDisplay = () => {
   if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
       Optanon.ToggleInfoDisplay();
   }
-}
+};
 
 const SignaturePage: NextPage = () => {
   const router = useRouter();
