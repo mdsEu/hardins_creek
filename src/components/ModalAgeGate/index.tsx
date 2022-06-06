@@ -8,7 +8,7 @@ import styles from './ModalAgeGate.module.scss';
 
 import useModalAgeGateHook from "./hooks/ModalAgeGateHook";
 
-import {asset} from '../../helpers';
+import { URLS } from '../../helpers';
 
 import logo from '@/public/images/modal-age-gate/logo_hardinscreek.png';
 import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
@@ -28,11 +28,8 @@ function ModalAgeGate(props: any) {
     focus,
   } = useModalAgeGateHook(open, storeAction, setAgeError)
   
-  const [inputList, setInputList] = useState({inputs: [0,1,2]});
- 
-  const inputRef = useRef(null);
-
-  // const [inputs, seInputs] = useState({});
+  const [inputList, setInputList] = useState([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     console.log('focus', focus);
@@ -42,14 +39,6 @@ function ModalAgeGate(props: any) {
 
   if(!props.open) {
     return <></>;
-  }
-
-
-  const urls = {
-    terms: 'https://www.beamsuntory.com/en/terms-and-conditions',
-    privacity: 'https://www.beamsuntory.com/en/privacy-policy',
-    cookies: 'https://www.beamsuntory.com/en/cookie-policy',
-    drink: 'https://www.drinksmart.com/',
   }
 
   const handleToggleDisplay = () => {
@@ -62,10 +51,9 @@ function ModalAgeGate(props: any) {
     };
     TagManager.initialize(tagManagerArgs);
 
-    if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
+    if (typeof window !== 'undefined') {
       window.Optanon.ToggleInfoDisplay();
     }
-  
   }
 
   return (
@@ -152,7 +140,7 @@ function ModalAgeGate(props: any) {
             <button onClick={onClickButtonSubmitAge}>BE PART OF THE LEGACY <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="15.8104" cy="15.8427" r="15.7772" fill="#0B1319"/><path d="M19.918 17.4494L20.5829 16.7844H19.6426H9.63852V15.3708H19.6426H20.5829L19.918 14.7059L17.4919 12.2798L18.4915 11.2802L23.2889 16.0776L18.4915 20.875L17.4919 19.8755L19.918 17.4494Z" fill="#DBCAAF" stroke="#0B1319" strokeWidth="0.778996"/></svg></button>
           </div>
           <div className={styles.wrap_logo_foot}>
-            <a className={styles.link_logo} href={urls.drink} target="_blank" rel="noreferrer">
+            <a className={styles.link_logo} href={URLS.drink} target="_blank" rel="noreferrer">
             <Image
               src={drinkSmart}
               alt="Drink Smart"
@@ -161,9 +149,9 @@ function ModalAgeGate(props: any) {
             />
             </a>
             <p className={styles.text_terms}>BY ENTERING, YOU AGREE TO OUR&nbsp;
-              <a href={urls.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>,&nbsp;
-              <a href={urls.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
-              <a href={urls.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
+              <a href={URLS.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>,&nbsp;
+              <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
+              <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
               <br />
               <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
               </p>
