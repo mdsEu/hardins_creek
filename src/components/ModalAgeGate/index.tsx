@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+/*global google*/
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'
 import PropTypes from 'prop-types';
@@ -32,9 +33,7 @@ function ModalAgeGate(props: any) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    console.log('focus', focus);
     const input = inputRef.current;
-    console.log('input', input);
   } , [focus]);
 
   if(!props.open) {
@@ -42,17 +41,16 @@ function ModalAgeGate(props: any) {
   }
 
   const handleToggleDisplay = () => {
-    console.log('call Optanon function!!!');
-    const tagManagerArgs = {
-      gtmId: 'GTM-P3XTKBJ',
-      events: {
-          event: `Optanon.ToggleInfoDisplay()`,
-      }
-    };
-    TagManager.initialize(tagManagerArgs);
+    // const tagManagerArgs = {
+    //   gtmId: 'GTM-P3XTKBJ',
+    //   events: {
+    //       event: `Optanon.ToggleInfoDisplay()`,
+    //   }
+    // };
+    // TagManager.initialize(tagManagerArgs);
 
-    if (typeof window !== 'undefined') {
-      window.Optanon.ToggleInfoDisplay();
+    if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
+        Optanon.ToggleInfoDisplay();
     }
   }
 
@@ -153,7 +151,7 @@ function ModalAgeGate(props: any) {
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
               <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
               <br />
-              <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
+              <a href="javascript:void(0);" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
               </p>
           </div>
         </div>
