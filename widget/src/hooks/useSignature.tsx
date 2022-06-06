@@ -32,7 +32,7 @@ function useSignatures() {
 
     for (let i = 0; i < signatures.length; i++) {
       const signature : any = signatures[i];
-      const image = <Image key={signature._id} alt={signature.id} src={signature.url} />;
+      const image = <Image className="signature" key={signature._id} alt={signature.id} src={signature.url} />;
 
       if(!arraySignatures[position]) {
         arraySignatures[position] = [image];
@@ -45,7 +45,7 @@ function useSignatures() {
       }
     }
 
-    return signatures.map((signature : any) => <Image key={signature._id} alt={signature.id} src={signature.url} />);
+    return signatures.map((signature : any) => <Image className="signature" key={signature._id} alt={signature.id} src={signature.url} />);
   }
 
   return {

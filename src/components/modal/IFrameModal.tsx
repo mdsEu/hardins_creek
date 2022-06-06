@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from '@/styles/Modal.module.scss';
-import { IiFrame } from '@/types/index';
+import { IiFrame } from '../../customTypes';
 import Image from 'next/image';
 import close from '@/public/images/cross-close.svg';
 
-type Props = { 
+
+type Props = {
   modal: IiFrame,
   setAgeError: (bool: boolean) => void,
 }
@@ -15,7 +16,7 @@ const Modal: React.FC<Props> = ({ modal, setAgeError }) => {
   return (
     <div className={styles.modal__overlay}>
       <div className={`${styles.modal} ${styles.i_frame}`} style={{width: `${modal.width}`}}>
-        <iframe 
+        <iframe
           width="100%"
           height="684px"
           src={modal.url}
