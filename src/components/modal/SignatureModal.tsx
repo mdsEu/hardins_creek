@@ -7,15 +7,22 @@ import quill from '@/public/images/quill.png';
 type Props = {
   modal: IModal,
   setSignature: (bool: boolean) => void,
+  setGoAgeGate: (bool: boolean) => void,
 }
 
-const Modal: React.FC<Props> = ({ modal, setSignature }) => {
+const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
   // Here close the modal when has elapsed 4sec time
   useEffect(() => {
     setTimeout(() => {
       setSignature(false);
-    }, 4000);
-  }, [setSignature]);
+      setGoAgeGate(true);
+    }, 4600);
+  }, [setSignature, setGoAgeGate]);
+
+  const handleCloseModal = () => {
+    setSignature(false);
+    setGoAgeGate(true);
+  }
 
   return (
     <div className={styles.modal__overlay}>
@@ -35,7 +42,7 @@ const Modal: React.FC<Props> = ({ modal, setSignature }) => {
         />
         <button
           className={`btn_transparent ${styles.modal__button}`}
-          onClick={() => setSignature(false)}
+          onClick={handleCloseModal}
           >Close</button>
       </div>
     </div>

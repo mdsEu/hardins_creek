@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router';
 import { useState, useEffect }  from 'react';
+import Image from 'next/image';
 
 import styles from '../styles/SignaturePage.module.scss'
 
@@ -11,14 +13,11 @@ import { IModal } from '../customTypes';
 import imageStore from '../store/imageStore';
 import HcBody from '../components/HcBody';
 
-<<<<<<< Updated upstream
-import { asset } from '../helpers';
-=======
 import { asset, URLS } from '../helpers';
 import {handleToggleDisplay} from '@/utils/optanonFunction';
 
-import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
->>>>>>> Stashed changes
+import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';;
+
 
 const modalSignUp: IModal = {
   title: null,
@@ -33,9 +32,11 @@ const modalSignature: IModal = {
 };
 
 const SignaturePage: NextPage = () => {
+  const router = useRouter();
   const [imgState, imgAction] = imageStore();
   const [noThanks, setNoThanks] = useState(false);
   const [signatureRecord, setSignatureRecord] = useState(false);
+  const [goAgeGate, setGoAgeGate] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,19 +44,45 @@ const SignaturePage: NextPage = () => {
     },1000);
   }, []);
 
+  useEffect(() => {
+    if(goAgeGate) {
+      router.push('/');
+    }
+
+  }, [goAgeGate, router]);
+
   return (
     <HcBody>
       <div className={styles.signature_page}>
-        <div className={styles.background_opacity}></div>
+        <div style={{height: "12px"}}></div>
         <div className={styles.wrap_content}>
           <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo.png')} />
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
           <p>Your signature will be displayed as one of the first who have tasted Hardin´s Creek.</p>
           <Signature storeAction={imgAction} setSignature={setSignatureRecord} />
         </div>
+        <div className={styles.wrap_foot}>
+            <a className={styles.link_logo} href={URLS.drink} target="_blank" rel="noreferrer">
+            <Image
+              src={drinkSmart}
+              alt="Drink Smart"
+              width={111}
+              height={27}
+            />
+            </a>
+            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654.<br />- ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.</p>
+            <p className={styles.text_terms}>
+              <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>&nbsp;-&nbsp;
+              <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a>&nbsp;-&nbsp;
+              <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;-&nbsp;
+              <a href={URLS.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>&nbsp;-&nbsp;
+              <a href={URLS.marketing} target="_blank" rel="noreferrer">MARKETING CODE</a>&nbsp;-&nbsp;
+              <a href={URLS.transparency} target="_blank" rel="noreferrer">SUPPLY CHAIN TRANSPARENCY</a>
+              </p>
+        </div>
       </div>
 
-      {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} />}
+      {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} setGoAgeGate={setGoAgeGate} />}
       {noThanks && <SignUpModal modal={modalSignUp} noThanks={setNoThanks} />}
     </HcBody>
   )
