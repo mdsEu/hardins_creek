@@ -6,7 +6,7 @@ import documentStore from '../store/documentStore';
 import HcBody from '../components/HcBody';
 
 import { IFrameModal } from '@/components/modal';
-import { IiFrame } from '@/types/index';
+import { IiFrame } from '../customTypes';
 
 const Home: NextPage = () => {
   const [,actionsDocument] = documentStore();

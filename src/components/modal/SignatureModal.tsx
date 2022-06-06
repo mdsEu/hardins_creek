@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styles from '@/styles/Modal.module.scss';
-import { IModal } from '@/types/index';
+import { IModal } from '../../customTypes';
 import Image from 'next/image';
 import quill from '@/public/images/quill.png';
 
-type Props = { 
+type Props = {
   modal: IModal,
   setSignature: (bool: boolean) => void,
 }

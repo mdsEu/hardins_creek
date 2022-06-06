@@ -11,6 +11,9 @@ import {asset} from '../../helpers';
 
 import logo from '../../../public/images/modal-age-gate/logo_hardinscreek.png';
 
+
+import {handleToggleDisplay} from '@/utils/optanonFunction';
+
 function ModalAgeGate(props: any) {
   const { open, storeAction, setAgeError } = props;
   const {
@@ -24,11 +27,22 @@ function ModalAgeGate(props: any) {
     onExitInput,
     checkOnlyNumbers,
   } = useModalAgeGateHook(open, storeAction, setAgeError)
+<<<<<<< Updated upstream
+=======
+
+  const [inputList, setInputList] = useState([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const input = inputRef.current;
+  } , [focus]);
+>>>>>>> Stashed changes
 
   if(!props.open) {
     return <></>;
   }
 
+<<<<<<< Updated upstream
   const urls = {
     terms: 'https://www.beamsuntory.com/en/terms-and-conditions',
     privacity: 'https://www.beamsuntory.com/en/privacy-policy',
@@ -41,6 +55,8 @@ function ModalAgeGate(props: any) {
     //Optanon.ToggleInfoDisplay();
   }
 
+=======
+>>>>>>> Stashed changes
   return (
     <>
       {props.withBackground && <div className={styles.background} onClick={props.closeWithBackground ? props.onClose : null}></div>}
@@ -101,7 +117,7 @@ function ModalAgeGate(props: any) {
               </div>
               <div className={styles.wrap_input}>
                 <div className={styles.dots}>
-                  <input 
+                  <input
                     type="number"
                     name="year"
                     placeholder="YEAR"

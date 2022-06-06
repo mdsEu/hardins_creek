@@ -6,12 +6,19 @@ import styles from '../styles/SignaturePage.module.scss'
 
 import Signature from '../components/Signature';
 import { SignUpModal, SignatureModal } from '@/components/modal';
-import { IModal } from '@/types/index';
+import { IModal } from '../customTypes';
 
 import imageStore from '../store/imageStore';
 import HcBody from '../components/HcBody';
 
+<<<<<<< Updated upstream
 import { asset } from '../helpers';
+=======
+import { asset, URLS } from '../helpers';
+import {handleToggleDisplay} from '@/utils/optanonFunction';
+
+import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
+>>>>>>> Stashed changes
 
 const modalSignUp: IModal = {
   title: null,
