@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '@/styles/Modal.module.scss';
 import { IiFrame } from '../../customTypes';
 import Image from 'next/image';
-import close from '@/public/images/cross-close.svg';
+import close from '@/public/images/close_icon.svg';
 
 
 type Props = {
@@ -25,7 +25,7 @@ const Modal: React.FC<Props> = ({ modal, setAgeError }) => {
           title={modal.title}
         />
       </div>
-      <button className={styles.close_button} onClick={(e) => setAgeError(false)}>
+      <button className={styles.close_button} onClick={() => setAgeError(false)}>
       <Image
           src={close}
           width={20}

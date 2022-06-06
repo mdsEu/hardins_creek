@@ -81,12 +81,7 @@
       }
       .error_terms {
         display: none;
-        position: absolute;
-        left: 42px;
-        bottom: -3px;
-        background-color: var(--text-color-error);
-        height: 1px;
-        width: calc(100% - 42px);
+        border-bottom: 1px solid var(--text-color-error);
         @include breakpointSmMin() {
           display: block;
         }
