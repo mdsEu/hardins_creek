@@ -14,6 +14,9 @@ import { URLS } from '../../helpers';
 import logo from '@/public/images/modal-age-gate/logo_hardinscreek.png';
 import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
 
+
+import {handleToggleDisplay} from '@/utils/optanonFunction';
+
 function ModalAgeGate(props: any) {
   const { open, storeAction, setAgeError } = props;
   const {
@@ -28,7 +31,7 @@ function ModalAgeGate(props: any) {
     checkOnlyNumbers,
     focus,
   } = useModalAgeGateHook(open, storeAction, setAgeError)
-  
+
   const [inputList, setInputList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -40,18 +43,11 @@ function ModalAgeGate(props: any) {
     return <></>;
   }
 
-  const handleToggleDisplay = () => {
-    // const tagManagerArgs = {
-    //   gtmId: 'GTM-P3XTKBJ',
-    //   events: {
-    //       event: `Optanon.ToggleInfoDisplay()`,
-    //   }
-    // };
-    // TagManager.initialize(tagManagerArgs);
-
-    if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
-        Optanon.ToggleInfoDisplay();
-    }
+  const urls = {
+    terms: 'https://www.beamsuntory.com/en/terms-and-conditions',
+    privacity: 'https://www.beamsuntory.com/en/privacy-policy',
+    cookies: 'https://www.beamsuntory.com/en/cookie-policy',
+    drink: 'https://www.drinksmart.com/',
   }
 
   return (
@@ -119,7 +115,7 @@ function ModalAgeGate(props: any) {
               </div>
               <div className={styles.wrap_input}>
                 <div className={styles.dots}>
-                  <input 
+                  <input
                     type="number"
                     name="year"
                     id="2"

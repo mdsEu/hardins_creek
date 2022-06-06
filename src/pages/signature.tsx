@@ -8,14 +8,16 @@ import styles from '../styles/SignaturePage.module.scss'
 
 import Signature from '../components/Signature';
 import { SignUpModal, SignatureModal } from '@/components/modal';
-import { IModal } from '@/types/index';
+import { IModal } from '../customTypes';
 
 import imageStore from '../store/imageStore';
 import HcBody from '../components/HcBody';
 
 import { asset, URLS } from '../helpers';
+import {handleToggleDisplay} from '@/utils/optanonFunction';
 
-import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
+import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';;
+
 
 const modalSignUp: IModal = {
   title: null,
@@ -28,12 +30,6 @@ const modalSignature: IModal = {
   message: 'Look for the symbol on the Hardin`s Creek website soon to see it etched into history.',
   width: 500,
 };
-
-const handleToggleDisplay = () => {
-  if (typeof window !== 'undefined') {
-    window.Optanon.ToggleInfoDisplay();
-  }
-}
 
 const SignaturePage: NextPage = () => {
   const router = useRouter();
