@@ -28,5 +28,6 @@ export const URLS = Object.freeze({
   cookies: 'https://www.beamsuntory.com/en/cookie-policy',
   drink: 'https://www.drinksmart.com/',
   marketing: 'https://www.beamsuntory.com/sites/default/files/BSI-Marketing-Code-of-Practice.pdf',
-  transparency: 'https://www.beamsuntory.com/en/supply-chain-transparency ',
+  transparency: 'https://www.beamsuntory.com/en/supply-chain-transparency',
+  contact: 'https://www.beamdistilling.com/contact-us',
 });
