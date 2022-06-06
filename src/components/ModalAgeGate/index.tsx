@@ -151,7 +151,7 @@ function ModalAgeGate(props: any) {
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
               <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
               <br />
-              <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
+              <a href="javascript:void(0);" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
               </p>
           </div>
         </div>
