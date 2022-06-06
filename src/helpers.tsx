@@ -21,3 +21,12 @@ export const setLocalStorageByKey = (key: any, val: any) => {
   }
   window.localStorage.setItem(key, val);
 }
+
+export const URLS = Object.freeze({
+  terms: 'https://www.beamsuntory.com/en/terms-and-conditions',
+  privacity: 'https://www.beamsuntory.com/en/privacy-policy',
+  cookies: 'https://www.beamsuntory.com/en/cookie-policy',
+  drink: 'https://www.drinksmart.com/',
+  marketing: 'https://www.beamsuntory.com/sites/default/files/BSI-Marketing-Code-of-Practice.pdf',
+  transparency: 'https://www.beamsuntory.com/en/supply-chain-transparency ',
+});
