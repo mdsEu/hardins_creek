@@ -31,12 +31,6 @@ const modalSignature: IModal = {
   width: 500,
 };
 
-const handleToggleDisplay = () => {
-  if (typeof window !== 'undefined' && typeof window.Optanon !== 'undefined') {
-      Optanon.ToggleInfoDisplay();
-  }
-};
-
 const SignaturePage: NextPage = () => {
   const router = useRouter();
   const [imgState, imgAction] = imageStore();
