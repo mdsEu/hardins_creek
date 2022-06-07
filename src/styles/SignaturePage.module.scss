@@ -83,7 +83,7 @@
   }
   .text_terms {
     margin: 0;
-    @include fsize(0.8);
+    @include fsize(0.5);
     color: var(--text-primary-color);
     a {
       &:hover {
