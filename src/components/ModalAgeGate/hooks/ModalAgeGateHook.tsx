@@ -69,11 +69,13 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
     const isValidBirthDate = checkValidateDate({
       day: value,
-      month: month ?? '01',
-      year: year ?? '2000'
+      month: month || '01',
+      year: year || '2000'
     });
 
-    if(!isValidBirthDate && value !== '0') {
+
+    console.log(isValidBirthDate)
+    if(!isValidBirthDate && (value !== '0')) {
       return;
     }
 
@@ -122,8 +124,8 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
     const isValidBirthDate = checkValidateDate({
       day: value,
-      month: month ?? '01',
-      year: year ?? '2000'
+      month: month || '01',
+      year: year || '2000'
     });
 
     if(!isValidBirthDate && value.length === 4) {
