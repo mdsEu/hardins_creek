@@ -48,7 +48,6 @@ const SignaturePage: NextPage = () => {
     if(goAgeGate) {
       router.push('/');
     }
-
   }, [goAgeGate, router]);
 
   return (
@@ -70,7 +69,7 @@ const SignaturePage: NextPage = () => {
               height={27}
             />
             </a>
-            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654.<br />- ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.</p>
+            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654. - ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.</p>
             <p className={styles.text_terms}>
               <a href={URLS.contact} target="_blank" rel="noreferrer">CONTACT US</a>&nbsp;-&nbsp;
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a>&nbsp;-&nbsp;
@@ -79,7 +78,7 @@ const SignaturePage: NextPage = () => {
               <a href={URLS.marketing} target="_blank" rel="noreferrer">MARKETING CODE</a>&nbsp;-&nbsp;
               <a href={URLS.transparency} target="_blank" rel="noreferrer">SUPPLY CHAIN TRANSPARENCY</a>&nbsp;-&nbsp;
               <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
-              </p>
+            </p>
         </div>
       </div>
 

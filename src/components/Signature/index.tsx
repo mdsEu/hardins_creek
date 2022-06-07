@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import Link from 'next/link'
 import PropTypes from 'prop-types';
 import SignaturePad from 'react-signature-pad-wrapper';
 
@@ -10,11 +11,10 @@ import { asset } from '../../helpers';
 
 function Signature(props: any) {
   const { storeAction, setSignature } = props;
-  
+
   const {
     isErrorTerms,
     acceptedTerms,
-    setAcceptedTerms,
     signatureRef,
     saveImg,
     cleanPad,
@@ -46,8 +46,12 @@ function Signature(props: any) {
           <span className={styles.icon_check}>
             <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </span>
-          <span className={isErrorTerms ? styles.error_terms : ''}>
-            *I agree to let Hardin´s Creek display my signature on their website.
+          <span className={`${styles.term} ${isErrorTerms ? styles.error_terms : ''}`}>
+            *I consent to the collection and processing of my personal data in line with the Beam Suntory <Link href={'https://www.beamsuntory.com/index.php/en/privacy-policy'}>
+            <a target="_blank">
+              Privacy Policy
+            </a>
+            </Link>.
           </span>
         </label>
       </div>

@@ -35,8 +35,12 @@
       position: relative;
       color: var(--text-primary-color);
       font-family: var(--font-benguiat_pro);
+      font-size: 13px;
       font-style: italic;
       letter-spacing: 1px;
+      .term {
+        margin-top: 4px;
+      }
       &.error {
         text-decoration: underline;
         text-decoration-color: var(--text-color-error);

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from '@/styles/Modal.module.scss';
 import { IModal } from '../../customTypes';
 import Image from 'next/image';
-import quill from '@/public/images/quill.png';
+import quill from '@/public/images/quill.svg';
 
 type Props = {
   modal: IModal,
@@ -16,7 +16,7 @@ const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
     setTimeout(() => {
       setSignature(false);
       setGoAgeGate(true);
-    }, 4600);
+    }, 10000);
   }, [setSignature, setGoAgeGate]);
 
   const handleCloseModal = () => {
@@ -35,9 +35,10 @@ const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
         )}
         {modal.message && <p>{modal.message}</p>}
         <Image
+          className={styles.quill}
           src={quill}
-          width={14}
-          height={23}
+          width={40}
+          height={40}
           alt="quill"
         />
         <button
