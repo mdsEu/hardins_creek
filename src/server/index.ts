@@ -7,6 +7,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import './db/connection'
 import * as utils from './utils';
+import passport from 'passport';
 import express, { Request, Response } from "express";
 import Express from './serverHandler/Express';
 import fileUpload from 'express-fileupload';
@@ -22,7 +23,8 @@ const middlewares = [
   morgan('dev'),
   express.urlencoded({extended: false}),
   express.json(),
-  fileUpload()
+  fileUpload(),
+  passport.initialize()
 ];
 
 app.prepare().then(() => {
