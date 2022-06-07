@@ -17,7 +17,7 @@ import { asset, URLS } from '../helpers';
 import {handleToggleDisplay} from '@/utils/optanonFunction';
 
 import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';;
-
+import documentStore from '../store/documentStore';
 
 const modalSignUp: IModal = {
   title: null,
@@ -37,9 +37,13 @@ const SignaturePage: NextPage = () => {
   const [noThanks, setNoThanks] = useState(false);
   const [signatureRecord, setSignatureRecord] = useState(false);
   const [goAgeGate, setGoAgeGate] = useState(false);
+  const [documentStates] = documentStore();
 
   useEffect(() => {
-    console.log(document.referrer)
+    if (documentStates.previousPage !== 'home') {
+      router.push('/');
+    }
+
     setTimeout(() => {
       setNoThanks(true);
     },1000);

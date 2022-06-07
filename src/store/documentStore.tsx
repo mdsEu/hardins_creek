@@ -5,6 +5,7 @@ import { createStore, createHook, Action } from 'react-sweet-state';
 type State = {
   bodyClasses: Array<string>,
   strBodyClasses: String,
+  previousPage: String,
 };
 type Actions = typeof actions;
 
@@ -13,6 +14,7 @@ const name = 'Document'
 const initialState = {
   bodyClasses: ['my_body'],
   strBodyClasses: 'my_body',
+  previousPage: '',
 };
 
 const actions = {
@@ -39,6 +41,12 @@ const actions = {
       });
     }
   },
+  setPreviousPage: (previousPage : string) => ({ getState, setState } : {getState: any, setState: any}) => {
+    setState({
+      previousPage,
+    });
+  }
+
 }
 
 const Store = createStore<State, Actions>({

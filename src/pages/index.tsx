@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import ModalAgeGate from '../components/ModalAgeGate';
 
 import documentStore from '../store/documentStore';
@@ -19,6 +19,10 @@ const Home: NextPage = () => {
     url: 'https://www.responsibility.org/',
     width: '96%',
   };
+
+  useEffect(() => {
+    actionsDocument.setPreviousPage('home');
+  }, []);
 
   return (
     <HcBody>
