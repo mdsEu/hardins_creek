@@ -4,7 +4,6 @@ import moment from 'moment';
 import TagManager from 'react-gtm-module';
 
 import {
-  setLocalStorageByKey,
   getLocalStorageByKey,
 } from '../../../helpers';
 
@@ -17,15 +16,18 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
   const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
   const [focus, setFocus] = useState(0);
 
-  //const inputRef = useRef<HTMLInputElement>(null);
+  const inputDayRef = useRef<HTMLInputElement>(null);
+  const inputMonthRef = useRef<HTMLInputElement>(null);
+  const inputYearRef = useRef<HTMLInputElement>(null);
 
   const onExitInput = (event: any) => {
     const { name, value } = event.target;
+
     if(value === '') return;
+
     const newValue = String(value).padStart(2, '0');
 
     name === 'day' ? setDay(newValue) : setMonth(newValue);
-    // name === 'day' ? setFocus(2) : setFocus(1);
   };
 
   const checkOnlyNumbers = (event: any) => {
@@ -34,54 +36,80 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
       event.preventDefault();
       return false;
     }
-    
+
     const exceptSymbols = ['e','E','+','-','.',','];
+
     if (exceptSymbols.includes(event.key)) {
       event.preventDefault();
       return false
     };
-    
+
     return true;
   };
 
   const handleChangeDay = (value: any) => {
-    const tempYear  = isNaN(parseInt(year)) ? 2000 : parseInt(year);
-    const tempMonth = isNaN(parseInt(month)) ? 1 : parseInt(month);
-    const tempDay   = parseInt(value);
+    const isValidBirthDate = checkValidateDate({
+      day: value,
+      month: month ?? '01',
+      year: year ?? '2022'
+    });
 
-    const isValidBirthDate = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD').isValid();
-
-    if(!isValidBirthDate) {
-      setDay('');
-      return;
-    }
 
     setDay(value);
     setMessageError('');
   };
 
-  const onChangeDayMonth = (event: any) => {
-    const { name, value, maxLength, id } = event.target;
+  const checkValidateDate = ({year = '2022', month='01', day='01'}) => {
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').isValid();
+  }
+
+  const onChangeDay = (event: any) => {
+    const { value, maxLength } = event.target;
 
     if (value.length > maxLength) return;
 
-    if(name === 'month') {
-      if(parseInt(value) > 12) {
-        return;
-      }
-      setMonth(value);
-      handleChangeDay(day);
-      if(value.length === maxLength) {
-        setFocus(1);
-      }
+    if (value == '00') {
+      return;
     }
-    
-    if(name === 'day') {
-      handleChangeDay(value);
-      if(value.length === maxLength) {
-        setFocus(2);
-      }
+
+    const isValidBirthDate = checkValidateDate({
+      day: value,
+      month: month ?? '01',
+      year: year ?? '2000'
+    });
+
+    if(!isValidBirthDate) {
+      return;
     }
+
+    setDay(value);
+
+    if(parseInt(value) > 3 || value === '01' || value === '02' || value === '03') {
+      setFocus(2);
+    }
+
+    return;
+  };
+
+  const onChangeMonth = (event: any) => {
+    const { value, maxLength } = event.target;
+
+    if (value.length > maxLength) return;
+
+    if(parseInt(value) > 12) {
+      return;
+    }
+
+    if (value == '00') {
+      return;
+    }
+
+    setMonth(value);
+
+    if (parseInt(value) > 1 || value === '01') {
+      setFocus(1);
+    }
+
     return;
   };
 
@@ -155,17 +183,37 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
+  useEffect(() => {
+    if (focus === 0) {
+      inputMonthRef.current?.focus();
+    }
+
+    if (focus === 1) {
+      inputDayRef.current?.focus();
+    }
+
+    if (focus === 2) {
+      inputYearRef.current?.focus();
+    }
+  } , [focus]);
+
+
   return {
     day,
     month,
     year,
-    onChangeDayMonth,
+    onChangeDay,
+    onChangeMonth,
     onChangeYear,
     onClickButtonSubmitAge,
     messageError,
     onExitInput,
     checkOnlyNumbers,
+    setFocus,
     focus,
+    inputDayRef,
+    inputMonthRef,
+    inputYearRef
   };
 }
 

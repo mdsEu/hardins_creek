@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /*global google*/
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Image from 'next/image'
 import PropTypes from 'prop-types';
 import TagManager from 'react-gtm-module';
@@ -23,31 +23,23 @@ function ModalAgeGate(props: any) {
     day,
     month,
     year,
-    onChangeDayMonth,
+    onChangeDay,
+    onChangeMonth,
     onChangeYear,
     onClickButtonSubmitAge,
     messageError,
     onExitInput,
     checkOnlyNumbers,
-    focus,
+    inputDayRef,
+    inputMonthRef,
+    inputYearRef,
+    setFocus
   } = useModalAgeGateHook(open, storeAction, setAgeError)
 
-  const [inputList, setInputList] = useState([]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const input = inputRef.current;
-  } , [focus]);
 
   if(!props.open) {
     return <></>;
-  }
-
-  const urls = {
-    terms: 'https://www.beamsuntory.com/en/terms-and-conditions',
-    privacity: 'https://www.beamsuntory.com/en/privacy-policy',
-    cookies: 'https://www.beamsuntory.com/en/cookie-policy',
-    drink: 'https://www.drinksmart.com/',
   }
 
   return (
@@ -87,11 +79,12 @@ function ModalAgeGate(props: any) {
                     id="0"
                     placeholder="MONTH"
                     onKeyDown={checkOnlyNumbers}
-                    onChange={onChangeDayMonth}
+                    onChange={onChangeMonth}
                     onBlur={onExitInput}
+                    onFocus = {() => setFocus(0)}
                     value={month}
                     maxLength={2}
-                    ref={inputRef}
+                    ref={inputMonthRef}
                   />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
@@ -104,11 +97,12 @@ function ModalAgeGate(props: any) {
                     id="1"
                     placeholder="DAY"
                     onKeyDown={checkOnlyNumbers}
-                    onChange={onChangeDayMonth}
+                    onChange={onChangeDay}
                     onBlur={onExitInput}
+                    onFocus = {() => setFocus(1)}
                     value={day}
                     maxLength={2}
-                    ref={inputRef}
+                    ref={inputDayRef}
                     />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
@@ -122,9 +116,10 @@ function ModalAgeGate(props: any) {
                     placeholder="YEAR"
                     onKeyDown={checkOnlyNumbers}
                     onChange={onChangeYear}
+                    onFocus = {() => setFocus(2)}
                     value={year}
                     maxLength={4}
-                    ref={inputRef}
+                    ref={inputYearRef}
                   />
                   <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
