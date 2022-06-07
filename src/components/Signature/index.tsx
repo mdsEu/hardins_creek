@@ -7,7 +7,6 @@ import SignaturePad from 'react-signature-pad-wrapper';
 import styles from '../../styles/Signature.module.scss';
 
 import signatureHook from "./hooks/SignatureHook";
-import { asset } from '../../helpers';
 
 function Signature(props: any) {
   const { storeAction, setSignature } = props;

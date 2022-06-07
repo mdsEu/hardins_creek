@@ -7,6 +7,8 @@ import {
   getLocalStorageByKey,
 } from '../../../helpers';
 
+const ERROR_MESSAGE = 'Please enter your date of birth correctly: MM - DD - YYYY';
+
 function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   const router = useRouter();
   const [messageError, setMessageError] = useState('');
@@ -138,14 +140,14 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
     const tempDay = isNaN(parseInt(day)) ? '' : parseInt(day);
 
     if(!tempDay || !tempMonth || !tempYear) {
-      setMessageError('Invalid date');
+      setMessageError(ERROR_MESSAGE);
       return;
     }
 
     const ageMoment = moment(`${tempYear}-${tempMonth}-${tempDay}`, 'YYYY-MM-DD');
     const isValidBirthDate = ageMoment.isValid();
     if(!isValidBirthDate) {
-      setMessageError('Invalid date');
+      setMessageError(ERROR_MESSAGE);
       return;
     }
 
