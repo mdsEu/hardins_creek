@@ -88,6 +88,10 @@
     }
     :global .text_error {
       text-align: center;
+      width: 56%;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      color: var(--text-primary-color);
     }
     .container_input {
       margin-bottom: 52px;
