@@ -7,13 +7,12 @@ import {
   getLocalStorageByKey,
 } from '../../../helpers';
 
-function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any) {
+function ModalAgeGateHook(open: boolean, actionsDocument: any) {
   const router = useRouter();
   const [messageError, setMessageError] = useState('');
   const [day, setDay] = useState(getLocalStorageByKey('age_gate__day'));
   const [month, setMonth] = useState(getLocalStorageByKey('age_gate__month'));
   const [year, setYear] = useState(getLocalStorageByKey('age_gate__year'));
-  const [timerYearDay, setTimerYearDay] = useState<ReturnType<typeof setTimeout>>(setTimeout(() =>({}), 1000));
   const [focus, setFocus] = useState(0);
 
   const inputDayRef = useRef<HTMLInputElement>(null);
@@ -32,6 +31,12 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
 
   const checkOnlyNumbers = (event: any) => {
     const keyCode = event.keyCode || event.which;
+
+    if (keyCode === 13) {
+      onClickButtonSubmitAge();
+      event.preventDefault();
+    }
+
     if (keyCode === 16 || keyCode > 31 && (keyCode < 48 || keyCode > 57)) {
       event.preventDefault();
       return false;
@@ -45,18 +50,6 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     };
 
     return true;
-  };
-
-  const handleChangeDay = (value: any) => {
-    const isValidBirthDate = checkValidateDate({
-      day: value,
-      month: month ?? '01',
-      year: year ?? '2022'
-    });
-
-
-    setDay(value);
-    setMessageError('');
   };
 
   const checkValidateDate = ({year = '2022', month='01', day='01'}) => {
@@ -78,7 +71,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
       year: year ?? '2000'
     });
 
-    if(!isValidBirthDate) {
+    if(!isValidBirthDate && value !== '0') {
       return;
     }
 
@@ -120,17 +113,22 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     let yearNumber = parseInt(value);
 
     const currentYear = parseInt(moment().format('YYYY'));
+
     if(yearNumber > currentYear) {
       yearNumber = currentYear;
     }
 
-    setYear(yearNumber.toString());
-    clearTimeout(timerYearDay);
-    const toutYear = setTimeout(() => {
-      handleChangeDay(day);
-    }, 800);
+    const isValidBirthDate = checkValidateDate({
+      day: value,
+      month: month ?? '01',
+      year: year ?? '2000'
+    });
 
-    setTimerYearDay(toutYear);
+    if(!isValidBirthDate && value.length === 4) {
+      return;
+    }
+
+    setYear(yearNumber.toString());
   };
 
   const onClickButtonSubmitAge = () => {
@@ -164,8 +162,7 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any, setAgeError: any)
     TagManager.dataLayer(tagManagerArgs);
 
     if (ageMoment.add(21, 'years').valueOf() > new Date().getTime()) {
-      // call iframe
-      setAgeError(true);
+      router.push('https://www.responsibility.org/');
       return;
     }
 

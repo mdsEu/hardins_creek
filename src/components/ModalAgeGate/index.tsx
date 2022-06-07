@@ -34,7 +34,7 @@ function ModalAgeGate(props: any) {
     inputMonthRef,
     inputYearRef,
     setFocus
-  } = useModalAgeGateHook(open, storeAction, setAgeError)
+  } = useModalAgeGateHook(open, storeAction)
 
 
 
