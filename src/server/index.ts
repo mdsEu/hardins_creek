@@ -7,9 +7,14 @@ import cors from 'cors';
 import morgan from 'morgan';
 import './db/connection'
 import * as utils from './utils';
+import passport from 'passport';
 import express, { Request, Response } from "express";
 import Express from './serverHandler/Express';
 import fileUpload from 'express-fileupload';
+
+import passportMiddleware from './middlewares/passport';
+
+import authRouters from './auth';
 
 const port = utils.server.getPortNumber();
 const dev = !utils.server.isEnvironment('production');
@@ -22,7 +27,8 @@ const middlewares = [
   morgan('dev'),
   express.urlencoded({extended: false}),
   express.json(),
-  fileUpload()
+  fileUpload(),
+  passport.initialize()
 ];
 
 app.prepare().then(() => {
@@ -30,7 +36,11 @@ app.prepare().then(() => {
 
   server.loadMiddlewares(middlewares);
 
-  server.loadRoutes('api', '../api').all('*', (req: Request, res: Response) => {
+  passport.use(passportMiddleware);
+
+  server.loadRoutes('api', '../api')
+  .authRoutes('auth', authRouters)
+  .all('*', (req: Request, res: Response) => {
     return handle(req, res);
   }).run();
 });
