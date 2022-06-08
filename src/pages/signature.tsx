@@ -62,7 +62,7 @@ const SignaturePage: NextPage = () => {
         <div className={styles.wrap_content}>
           <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo.png')} />
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
-          <p>Your signature will be displayed as one of the few who have tasted Hardin’s Creek.</p>
+          <p>Your signature will be displayed among the few who have tasted Hardin’s Creek.</p>
           <Signature storeAction={imgAction} setSignature={setSignatureRecord} />
         </div>
         <div className={styles.wrap_foot}>
