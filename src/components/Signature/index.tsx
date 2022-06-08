@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import SignaturePad from 'react-signature-pad-wrapper';
@@ -8,8 +8,12 @@ import styles from '../../styles/Signature.module.scss';
 
 import signatureHook from "./hooks/SignatureHook";
 
+import { PublicityWaiverModal } from '@/components/modal';
+import { IModal } from '../../customTypes';
 function Signature(props: any) {
   const { storeAction, setSignature } = props;
+  const [showConsent, setShowConsent] = useState(false);
+
 
   const {
     isErrorTerms,
@@ -23,6 +27,13 @@ function Signature(props: any) {
     onChangeConsent,
     alertSignatureEmpty,
   } = signatureHook(storeAction, setSignature)
+
+
+  const modalConcent: IModal = {
+    title: 'Publicity Waiver and Release:',
+    message: '',
+    width: 600,
+  };
 
   return (
     <div className={styles.comp_signature}>
@@ -64,8 +75,11 @@ function Signature(props: any) {
             <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
           </span>
           <span className={`${styles.term} ${styles.term_secondary} ${isErrorConsent ? styles.error_terms : ''}`}>
-            *I consent to the use of my signature on this website for advertising, promotion, and other commercial purposes, according to the terms of BSI’s <Link href={'https://www.beamsuntory.com/index.php/en/privacy-policy'}>
-              <a target="_blank">
+              *I consent to the use of my signature on this website for advertising, promotion, and other commercial purposes, according to the terms of BSI’s <Link href={'https://www.beamsuntory.com/index.php/en/privacy-policy'}>
+              <a onClick={(e) => {
+                e.preventDefault();
+                setShowConsent(true);
+              }}>
                 Publicity Waiver & Release
               </a>
             </Link>.
@@ -76,6 +90,7 @@ function Signature(props: any) {
         <span className="text_submit">SUBMIT</span>
         <span className="btn_round" title="Submit">→</span>
       </button>
+      {showConsent && <PublicityWaiverModal modal={modalConcent} setShowConsent={setShowConsent} />}
     </div>
   )
 }
