@@ -59,11 +59,6 @@ function SignatureHook(store: any, setSignature: any) {
     signature.clear();
 
     setAlertSignatureEmpty(false);
-
-    setAcceptedTerms(false);
-    setAcceptedConsent(false);
-    setIsErrorTerms(false);
-    setIsErrorConsent(false);
   }
 
   const onChangeTerms = () => {
