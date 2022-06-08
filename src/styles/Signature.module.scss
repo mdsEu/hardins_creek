@@ -30,6 +30,7 @@
     margin: 0 auto 20px auto;
     padding: 0 4%;
     display: table;
+    width: 100%;
     label {
       display: block;
       position: relative;
@@ -39,7 +40,17 @@
       font-style: italic;
       letter-spacing: 1px;
       .term {
+        width: calc(100% - 26px);
         margin-top: 4px;
+
+        &.term_secondary {
+          margin-top: 0;
+        }
+
+        a {
+          color: var(--text-primary-color);
+          text-decoration: underline;
+        }
       }
       &.error {
         text-decoration: underline;

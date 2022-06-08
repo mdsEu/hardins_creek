@@ -8,6 +8,8 @@
   margin: 0 auto;
 }
 .signatures-wrapper{
+  justify-content: center;
+  justify-items: center;
   overflow: hidden;
   display: grid;
   gap: 0;
@@ -15,8 +17,7 @@
   grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
 }
 
-img.signature {
+img.img-signature {
   width: 80%;
-  height: 80%;
-  margin: 10%;
+  padding: 0;
 }

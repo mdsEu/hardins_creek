@@ -45,7 +45,7 @@ function useSignatures() {
       }
     }
 
-    return signatures.map((signature : any) => <Image className="signature" key={signature._id} alt={signature.id} src={signature.url} />);
+    return signatures.map((signature : any) => <Image className="img-signature" key={signature._id} alt={signature.id} src={signature.url} />);
   }
 
   return {
