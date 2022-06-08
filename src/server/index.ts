@@ -12,6 +12,10 @@ import express, { Request, Response } from "express";
 import Express from './serverHandler/Express';
 import fileUpload from 'express-fileupload';
 
+import passportMiddleware from './middlewares/passport';
+
+import authRouters from './auth';
+
 const port = utils.server.getPortNumber();
 const dev = !utils.server.isEnvironment('production');
 
@@ -32,7 +36,11 @@ app.prepare().then(() => {
 
   server.loadMiddlewares(middlewares);
 
-  server.loadRoutes('api', '../api').all('*', (req: Request, res: Response) => {
+  passport.use(passportMiddleware);
+
+  server.loadRoutes('api', '../api')
+  .authRoutes('auth', authRouters)
+  .all('*', (req: Request, res: Response) => {
     return handle(req, res);
   }).run();
 });

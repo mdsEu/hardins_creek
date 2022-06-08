@@ -8,6 +8,8 @@
   margin: 0 auto;
 }
 .signatures-wrapper{
+  justify-content: center;
+  justify-items: center;
   overflow: hidden;
   display: grid;
   gap: 0;
@@ -17,6 +19,5 @@
 
 img.img-signature {
   width: 80%;
-  height: 80%;
-  margin: 10%;
+  padding: 0;
 }

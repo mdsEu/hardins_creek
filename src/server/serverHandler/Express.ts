@@ -3,7 +3,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import express from 'express';
+import express, {Router} from 'express';
 import pluralize from "pluralize";
 
 class Express {
@@ -28,6 +28,12 @@ class Express {
 
     return this;
   }
+
+  authRoutes(basePath: string, authRoute: Router) {
+    this.server.use(`/${basePath}`, authRoute);
+    return this;
+  }
+
 
   all(path: string, callback:any) {
     this.server.all(path, callback);
