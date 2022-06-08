@@ -74,7 +74,8 @@ const SignaturePage: NextPage = () => {
               height={27}
             />
             </a>
-            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654. - ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL. <a href={URLS.contact} target="_blank" rel="noreferrer">CONTACT US</a>&nbsp;-&nbsp;
+            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654. - ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.<br />
+              <a href={URLS.contact} target="_blank" rel="noreferrer">CONTACT US</a>&nbsp;-&nbsp;
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a>&nbsp;-&nbsp;
               <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;-&nbsp;
               <a href={URLS.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>&nbsp;-&nbsp;
