@@ -52,7 +52,7 @@
   font-weight: 400;
   @include fsize(0.86);
   letter-spacing: 0.2px;
-  line-height: 2.5px;
+  /*line-height: 2.5px;*/
   color: var(--text-primary-color);
   text-align: center;
   &.sign {
