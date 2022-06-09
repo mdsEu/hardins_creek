@@ -44,7 +44,6 @@ function ModalAgeGate(props: any) {
 
   return (
     <>
-      {/* {props.withBackground && <div className={styles.background} onClick={props.closeWithBackground ? props.onClose : null}></div>} */}
       <div className={`${styles.age_gate_page} ${withBackground && styles.background}`}>
         <div className={styles.panel}>
           <div className={styles.wrap_logo}>
