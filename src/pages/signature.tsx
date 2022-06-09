@@ -58,7 +58,6 @@ const SignaturePage: NextPage = () => {
   return (
     <HcBody>
       <div className={styles.signature_page}>
-        <div style={{height: "12px"}}></div>
         <div className={styles.wrap_content}>
           <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo.png')} />
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
