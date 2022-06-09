@@ -18,7 +18,7 @@ import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
 import {handleToggleDisplay} from '@/utils/optanonFunction';
 
 function ModalAgeGate(props: any) {
-  const { open, storeAction, setAgeError } = props;
+  const { open, storeAction, withBackground, setAgeError } = props;
   const {
     day,
     month,
@@ -44,9 +44,9 @@ function ModalAgeGate(props: any) {
 
   return (
     <>
-      {props.withBackground && <div className={styles.background} onClick={props.closeWithBackground ? props.onClose : null}></div>}
-      <div className={styles.panel}>
-        <div className={styles.padder}>
+      {/* {props.withBackground && <div className={styles.background} onClick={props.closeWithBackground ? props.onClose : null}></div>} */}
+      <div className={`${styles.age_gate_page} ${withBackground && styles.background}`}>
+        <div className={styles.panel}>
           <div className={styles.wrap_logo}>
             <Image
               src={logo}
