@@ -16,7 +16,7 @@ const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
     setTimeout(() => {
       setSignature(false);
       setGoAgeGate(true);
-    }, 10000);
+    }, 12000);
   }, [setSignature, setGoAgeGate]);
 
   const handleCloseModal = () => {
