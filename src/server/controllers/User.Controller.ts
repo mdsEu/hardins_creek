@@ -1,7 +1,9 @@
 import UserRepository from "../repositories/User.Repository";
 import { Request, Response } from "express";
 
+import * as utils from "../utils";
 
+import IUser from '../types/User';
 class UserController {
   async create(req: Request, res: Response) {
     try {
@@ -11,7 +13,7 @@ class UserController {
 
       const user = await userRepository.save();
 
-      return res.json(user);
+      return res.json({...user, token: utils.auth.createToken(user as IUser)});
     } catch (e) {
       return res.json({
         errorMessage: "Error saving the user"
@@ -26,7 +28,7 @@ class UserController {
 
       if (user) {
         if (await userRepository.validatePassword(req.body.password)) {
-          return res.json(user);
+          return res.json({...user, token: utils.auth.createToken(user as IUser)});
         }
       }
 
@@ -35,6 +37,13 @@ class UserController {
       return res.json({ errorMessage: "Error signing in" });
     }
   }
+
+  async validate(req: Request, res: Response) {
+    return res.json({
+      user: req.user
+    });
+  }
+
 }
 
 export default UserController;
