@@ -11,7 +11,9 @@ function useSignature() {
     const load = async () => {
       await actions.get();
     }
-    load();
+    if (store.signatures.length === 0) {
+      load();
+    }
   }, [])
 
   const updateStatus = (id: string, status: string) => {

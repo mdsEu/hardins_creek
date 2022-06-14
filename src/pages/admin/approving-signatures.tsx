@@ -4,6 +4,7 @@ import {validateTokenSSR} from '../../utils/auth';
 
 
 import SignatureTable from '@/components/SignatureTable';
+import BoostrapHead from '@/components/BoostrapHead';
 
 import useSignature from '../../hooks/signatureHook';
 
@@ -11,7 +12,10 @@ function ApprovingSignatures() {
   const { signatures } = useSignature();
 
   return (
-    <SignatureTable signatures={signatures} />
+    <>
+       <BoostrapHead title="Approving Signatures" />
+       <SignatureTable signatures={signatures} />
+    </>
   )
 }
 
