@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import {Button} from 'react-bootstrap';
+import styles from '@/styles/Admin.module.scss';
 
 import useSignature from '../../../hooks/signatureHook';
 
@@ -9,18 +10,20 @@ function SignatureRows({index, id, signature, status, createdAt}: {index: number
   return (
     <tr>
       <td>{index}</td>
-      <td>
+      <td className={styles.cell_signature}>
         <Image
           src={signature}
-          width={100}
-          height={100}
+          layout="fill"
+          objectFit='contain'
           alt="signature"
         />
       </td>
       <td>{status}</td>
       <td>{createdAt}</td>
-      <td><Button variant="primary" onClick={updateStatus(id, 'approved')}>Approve</Button></td>
-      <td><Button variant="danger" onClick={updateStatus(id, 'rejected')}>Reject</Button></td>
+      <td>
+        <Button variant="success" onClick={updateStatus(id, 'approved')}>Approve</Button> &nbsp;
+        <Button variant="danger" onClick={updateStatus(id, 'rejected')}>Reject</Button>
+      </td>
     </tr>
   )
 }
