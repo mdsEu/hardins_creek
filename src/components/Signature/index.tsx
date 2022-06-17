@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import SignaturePad from 'react-signature-pad-wrapper';
+import { useMediaQuery } from 'react-responsive'
 
 import styles from '../../styles/Signature.module.scss';
 
@@ -11,9 +12,9 @@ import signatureHook from "./hooks/SignatureHook";
 import { PublicityWaiverModal } from '@/components/modal';
 import { IModal } from '../../customTypes';
 function Signature(props: any) {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const { storeAction, setSignature } = props;
   const [showConsent, setShowConsent] = useState(false);
-
 
   const {
     isErrorTerms,
@@ -28,7 +29,6 @@ function Signature(props: any) {
     alertSignatureEmpty,
   } = signatureHook(storeAction, setSignature)
 
-
   const modalConcent: IModal = {
     title: 'Publicity Waiver and Release:',
     message: '',
@@ -40,7 +40,7 @@ function Signature(props: any) {
       <div className={styles.canvasWrapper}>
         <SignaturePad
           ref={signatureRef}
-          height={160}
+          height={isMobile ? 90 : 160}
           options={{
             minWidth: 1.5,
             maxWidth: 3.5,
