@@ -28,6 +28,11 @@ body {
   overflow: hidden;
 }
 
+.admin {
+  overflow: auto !important;
+  background-color: #eee;
+}
+
 a {
   color: inherit;
   text-decoration: none;

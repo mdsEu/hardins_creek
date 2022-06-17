@@ -1,7 +1,5 @@
 import { createStore, createHook, Action } from 'react-sweet-state';
 
-
-
 type State = {
   bodyClasses: Array<string>,
   strBodyClasses: String,

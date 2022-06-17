@@ -1,0 +1,71 @@
+@import './variables.scss';
+
+.layout_admin {
+  background-color: #eee;
+  height: 100vh;
+}
+
+.layout_content {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table_wrapper {
+  position: relative;
+  padding: 20px;
+  width: 90%;
+
+  & td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.cell_signature {
+  width: 30%;
+  position: relative;
+  height: 80px;
+  background-color: #fff;
+}
+
+.login_wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding:30px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  width: 320px;
+  height: 400px;
+  z-index: 100;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.wrap_logo {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  img {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.filter_section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px auto;
+}
