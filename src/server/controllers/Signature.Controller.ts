@@ -60,6 +60,21 @@ class SignatureController {
       });
     }
   }
+
+  async updateStatus(req:Request, res: Response) {
+    try {
+      const signatureRepository = new SignatureRepository();
+      await signatureRepository.setId(req.params.id);
+      signatureRepository.setApproved(req.body.status === 'approved');
+      const signature = await signatureRepository.updateStatus();
+
+      return res.json(signature);
+    } catch (e) {
+      return res.json({
+        errorMessage: "Error updating the signature"
+      });
+    }
+  }
 }
 
 export default SignatureController;
