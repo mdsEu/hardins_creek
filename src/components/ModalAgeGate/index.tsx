@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image'
 import PropTypes from 'prop-types';
-import TagManager from 'react-gtm-module';
 
 import styles from './ModalAgeGate.module.scss';
 
@@ -50,8 +49,8 @@ function ModalAgeGate(props: any) {
             <Image
               src={logo}
               alt="Hardin's Creek"
-              width={180}
-              height={41.7}
+              layout='fill'
+              objectFit='contain'
             />
           </div>
 

@@ -13,8 +13,8 @@
   overflow: hidden;
   display: grid;
   gap: 0;
-  grid-auto-rows: 10rem;
-  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  grid-auto-rows: 6rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
 
 img.img-signature {
