@@ -3,6 +3,7 @@ $grid-breakpoints: (
     sm: 575px,
     md: 767px,
     lg: 991px,
+    desktop: 1024px,
     xl: 1199px,
     xxl: 1999px,
 ) !default;
@@ -48,6 +49,11 @@ $grid-breakpoints: (
         @content;
     }
 }
+@mixin breakpointDesktopMin {
+    @media screen and (min-width: map-get($grid-breakpoints,'desktop')+1) {
+        @content;
+    }
+}
 
 //-----------
 
@@ -68,6 +74,11 @@ $grid-breakpoints: (
 }
 @mixin breakpointSm {
     @media screen and (max-width: map-get($grid-breakpoints,'sm')) {
+        @content;
+    }
+}
+@mixin breakpointTablet {
+    @media (min-width: 768px) and (max-width: 1024px) {
         @content;
     }
 }
