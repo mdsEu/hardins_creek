@@ -33,13 +33,16 @@ function ModalAgeGateHook(open: boolean, actionsDocument: any) {
 
   const checkOnlyNumbers = (event: any) => {
     const keyCode = event.keyCode || event.which;
+    const value = event.target.value;
+    const regExpNumbers = /^\d+$/;
+    const hasOnlyNumbers = regExpNumbers.test(value);
 
     if (keyCode === 13) {
       onClickButtonSubmitAge();
       event.preventDefault();
     }
 
-    if (keyCode === 16 || keyCode > 31 && (keyCode < 48 || keyCode > 57)) {
+    if (!hasOnlyNumbers) {
       event.preventDefault();
       return false;
     }

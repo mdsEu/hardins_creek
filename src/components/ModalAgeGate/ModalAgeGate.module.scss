@@ -49,8 +49,9 @@
       width: 106px;
       height: 24px;
       @include breakpointSmMin() {
-        width: 215px;
-        height: 69px;
+        width: 200px;
+        height: 45.4px;
+        margin-bottom: 30px;
       }
       overflow: hidden;
       text-align: center;
@@ -91,6 +92,9 @@
         @include breakpointSmMin() {
           @include fsize(3);
         }
+        @include breakpointXlMin() {
+          @include fsize(3.4);
+        }
       }
       span.title__secondary {
         font-family: var(--font-benguiat_pro);
@@ -103,6 +107,9 @@
         @include breakpointSmMin() {
           @include fsize(1.6);
         }
+        @include breakpointXlMin() {
+          @include fsize(1.9);
+        }
       }
     }
     & > label {
@@ -110,13 +117,16 @@
       text-align: center;
       display: block;
       margin: 5px 0 15px 0;
+      @include breakpointXlMin() {
+        @include fsize(1.3);
+      }
     }
     :global .text_error {
       font-size: 0.7rem;
       letter-spacing: 1.5px;
       @include breakpointSmMin() {
         font-size: 0.9rem;
-        width: 56%;
+        //width: 56%;
       }
       text-align: center;
       margin: 0 auto;
@@ -124,6 +134,7 @@
       color: var(--text-primary-color);
     }
     .container_input {
+      border: 1px solid var(--text-primary-color);
       margin-bottom: 28px;
       @include breakpointSmMin() {
         margin-bottom: 52px;
@@ -141,7 +152,10 @@
           @include breakpointSmMin() {
             height: 100px;
           }
-          width: 33.33333%;
+          @include breakpointXlMin() {
+            height: 120px;
+          }
+          //width: 33.33333%;
           .dots {
             position: relative;
             height: 60%;
@@ -168,6 +182,9 @@
             @include fsize(1.3);
             @include breakpointSmMin() {
               @include fsize(1.8);
+            }
+            @include breakpointXlMin() {
+              @include fsize(2.3);
             }
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
@@ -215,10 +232,15 @@
         align-items: center;
         justify-content: center;
         padding: 10px;
+        @include breakpointXlMin() {
+          padding: 15px;
+          @include fsize(1.55);
+        }
         border: 1px solid var(--text-primary-color);
         background-color: var(--text-primary-color);
         color: var(--bg-primary-color);
         width: 100%;
+        cursor: pointer;
         @include breakpointSmMin() {
           @include fsize(1.5);
         }
@@ -299,7 +321,7 @@
         letter-spacing: 0.4px;
         @include breakpointSmMin() {
           @include fsize(0.8);
-          letter-spacing: 2px;
+          letter-spacing: 1px;
         }
         color: var(--text-primary-color);
         a {

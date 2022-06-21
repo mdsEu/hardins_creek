@@ -16,6 +16,7 @@ import HcBody from '../components/HcBody';
 import { asset, URLS } from '../helpers';
 import {handleToggleDisplay} from '@/utils/optanonFunction';
 
+import logo from '@/public/images/modal-age-gate/logo_hardinscreek.png';
 import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';;
 import documentStore from '../store/documentStore';
 
@@ -59,7 +60,14 @@ const SignaturePage: NextPage = () => {
     <HcBody>
       <div className={styles.signature_page}>
         <div className={styles.wrap_content}>
-          <img alt="Hardin's Creek" src={asset('images/modal-age-gate/logo.png')} />
+          <div className={styles.wrap_logo}>
+            <Image
+              src={logo}
+              alt="Hardin's Creek"
+              layout='fill'
+              objectFit='contain'
+            />
+          </div>
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
           <p>Your signature will be displayed as one of the few who have tasted Hardin’s Creek.</p>
           <Signature storeAction={imgAction} setSignature={setSignatureRecord} />
