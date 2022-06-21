@@ -3,13 +3,11 @@ import Image from 'next/image';
 import {Button} from 'react-bootstrap';
 import styles from '@/styles/Admin.module.scss';
 
-import useSignature from '../../../hooks/signatureHook';
+function SignatureRows({index, id, signature, status, updateStatus, createdAt}: {index: number, id:string, signature: string, status: string, updateStatus: (id : string, signature : string)=> () => void, createdAt: string}) {
 
-function SignatureRows({index, id, signature, status, createdAt}: {index: number, id:string, signature: string, status: string, createdAt: string}) {
-  const { updateStatus } = useSignature();
   return (
     <tr>
-      <td>{index}</td>
+      <td>{(index + 1 )}</td>
       <td className={styles.cell_signature}>
         <Image
           src={signature}

@@ -7,8 +7,8 @@ class SignatureRepository {
   #url = "";
   #approved = false;
   #updatedAt!: Date;
-  #limit: number = 10;
-  #skip: number = 1;
+  #limit: number = 0;
+  #skip: number = 0;
 
   constructor() {
     this.#signature = new SignatureModel();
@@ -41,16 +41,22 @@ class SignatureRepository {
     }
   }
 
-  async findAll() {
+  async findAll(searchingParameters: any) {
     try{
-      return await SignatureModel
-        .find()
+      if (this.#limit && this.#skip) {
+        return await SignatureModel
+        .find({...searchingParameters})
         .limit(this.#limit)
         .skip(this.#skip)
         .exec();
+      } else {
+        return await SignatureModel
+        .find({...searchingParameters})
+        .sort({created_at: -1})
+        .exec();
+      }
     } catch(e) {
       throw "Server error on searching executed";
-
     }
   }
 
@@ -63,7 +69,6 @@ class SignatureRepository {
         .exec();
     } catch(e) {
       throw "Server error on searching executed";
-
     }
   }
 

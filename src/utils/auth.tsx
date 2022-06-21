@@ -40,7 +40,7 @@ const redirectOnError = (ctx: any) => {
 
 const validate = async (token: string) => {
   if (token) {
-    const url = typeof window !== 'undefined' ? window.location.origin : `${process.env.NEXT_PUBLIC_APP_URL}:8080`;
+    const url = typeof window !== 'undefined' ? window.location.origin : `${process.env.NEXT_SERVER_APP_URL}`;
 
     const request = await fetch(`${url}/api/users/validate`, {
       method: 'GET',

@@ -13,8 +13,7 @@ const userSchema = new Schema({
   },
   approved: {
     type: Boolean,
-    required: true,
-    default: false
+    default: null
   },
   created_at: {
     type: Date,

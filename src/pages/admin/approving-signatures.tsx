@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import Layout from '@/components/Layout/Admin';
 import styles from '@/styles/Admin.module.scss';
 import Logo from '@/components/Layout/LogoHC';
@@ -8,18 +8,8 @@ import {validateTokenSSR} from '../../utils/auth';
 import SignatureTable from '@/components/SignatureTable';
 import useSignature from '../../hooks/signatureHook';
 function ApprovingSignatures() {
-  const { signatures } = useSignature();
-
-  const [filter, setFilter] = useState({
-    approved: false,
-    rejected: false,
-  });
-
-  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, checked } = e.target;
-    setFilter({...filter, [id]: checked});
-  };
-
+  const { handleFilter, filter, isLoading, filteredSignatured } = useSignature(true);
+  console.log(filteredSignatured)
   return (
     <Layout title="Approving Signatures">
       <div className={styles.table_wrapper}>
@@ -28,24 +18,37 @@ function ApprovingSignatures() {
           <h5>Filter By: &nbsp;</h5>
 
           <Form>
-          <Form.Check
+            <Form.Check
+              inline
+              type="switch"
+              id="pending"
+              label="Pending"
+              checked={filter === 'pending'}
+              disabled={isLoading}
+              onChange={handleFilter}
+            />
+            <Form.Check
               inline
               type="switch"
               id="approved"
               label="Approved"
+              checked={filter === 'approved'}
+              disabled={isLoading}
               onChange={handleFilter}
-              />
-            <Form.Check 
+            />
+            <Form.Check
               inline
               type="switch"
               id="rejected"
               label="Rejected"
+              checked={filter === 'rejected'}
+              disabled={isLoading}
               onChange={handleFilter}
             />
           </Form>
 
         </div>
-        <SignatureTable signatures={signatures} filter={filter} />
+        <SignatureTable signature={filteredSignatured}/>
       </div>
     </Layout>
   )
