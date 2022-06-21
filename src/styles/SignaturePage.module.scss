@@ -7,6 +7,9 @@
     background-position: center;
     justify-content: center;
   }
+  @include breakpointXlMin() {
+    justify-content: space-evenly;
+  }
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,12 +50,31 @@
   }
   z-index: 100;
 
-  & > img {
-    display: table;
-    margin: 5px auto 30px auto;
-    max-width: 180px;
-    width: 100%;
+  .wrap_logo {
+    position: relative;
+    margin: 0 auto;
+    width: 130px;
+    height: 29.5px;
+    margin-bottom: 20px;
+    @include breakpointSmMin() {
+      width: 200px;
+      height: 45.4px;
+      margin-bottom: 30px;
+    }
+    @include breakpointXlMin() {
+      width: 280px;
+      height: 63.6px;
+      margin-bottom: 40px;
+    }
+    overflow: hidden;
+    text-align: center;
+    img {
+      display: table;
+      margin: 0 auto;
+      width: 100%;
+    }
   }
+
   & > h3 {
     text-align: center;
     @include fsize(1.5);
@@ -80,9 +102,8 @@
     font-style: italic;
   }
 }
- 
+
 .wrap_foot {
-  align-self: flex-end;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -90,8 +111,12 @@
   justify-content: center;
   z-index: 100;
   padding: 0 10px;
+  max-width: 1200px;
   @include breakpointSmMin() {
     padding: 0;
+  }
+  @include breakpointXlMin() {
+    padding: 0 108px;
   }
   .link_logo {
     width: 82px;
@@ -109,14 +134,16 @@
   }
   .text_terms {
     margin: 0;
-    @include fsize(0.56);
-    letter-spacing: 0.4px;
+    @include fsize(0.52);
+    letter-spacing: 0px;
     @include breakpointSmMin() {
       @include fsize(0.9);
-      letter-spacing: 1.5px;
-
+      letter-spacing: 1px;
     }
-    letter-spacing: 0px;
+    @include breakpointXlMin() {
+      @include fsize(0.75);
+      letter-spacing: 0px;
+    }
     color: var(--text-primary-color);
     a {
       &:hover {
