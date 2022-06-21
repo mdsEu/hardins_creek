@@ -29,7 +29,7 @@ const modalSignUp: IModal = {
 const modalSignature: IModal = {
   title: 'You signature has been recorded.',
   message: 'Look for the symbol on the Hardin`s Creek website soon to see it etched into history.',
-  width: 500,
+  width: 350,
 };
 
 const SignaturePage: NextPage = () => {

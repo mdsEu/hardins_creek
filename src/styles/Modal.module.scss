@@ -72,6 +72,9 @@
     @include fsize(0.86);
     padding: 0;
   }
+  @include breakpointXlMin() {
+    padding: 0 14px;
+  }
   letter-spacing: 0.2px;
   color: var(--text-primary-color);
   text-align: center;
