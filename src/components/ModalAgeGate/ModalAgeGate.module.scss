@@ -117,6 +117,7 @@
       text-align: center;
       display: block;
       margin: 5px 0 15px 0;
+      letter-spacing: 2.5px;
       @include breakpointXlMin() {
         @include fsize(1.3);
       }
