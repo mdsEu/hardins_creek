@@ -3,6 +3,7 @@ import styles from '@/styles/Modal.module.scss';
 import { IModal } from '../../customTypes';
 import Image from 'next/image';
 import quill from '@/public/images/quill.svg';
+import { useMediaQuery } from 'react-responsive'
 
 type Props = {
   modal: IModal,
@@ -11,6 +12,8 @@ type Props = {
 }
 
 const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   // Here close the modal when has elapsed 4sec time
   useEffect(() => {
     setTimeout(() => {
@@ -26,7 +29,7 @@ const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal}>
+      <div className={styles.modal} style={{width: `${isMobile ? '340' : modal.width}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>
