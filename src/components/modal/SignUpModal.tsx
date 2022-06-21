@@ -15,7 +15,7 @@ const Modal: React.FC<Props> = ({ modal, noThanks }) => {
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal} style={{width: `${isDesktop ? '450' : modal.width}px`}}>
+      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '500'}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>

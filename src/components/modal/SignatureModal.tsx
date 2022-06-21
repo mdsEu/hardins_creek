@@ -29,7 +29,7 @@ const Modal: React.FC<Props> = ({ modal, setSignature, setGoAgeGate }) => {
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal} style={{width: `${isMobile ? '340' : modal.width}px`}}>
+      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '550'}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>

@@ -16,7 +16,7 @@ class SignatureController {
     } catch (e) {
       return res.json({
         errorMessage: "Error saving the image"
-      });
+      }).status(500);
     }
   }
 
@@ -37,15 +37,15 @@ class SignatureController {
     } catch (e) {
       return res.json({
         errorMessage: "Error getting the signatures"
-      });
+      }).status(500);
     }
   }
 
   async getAll(req:Request, res: Response) {
     try {
       const signatureRepository = new SignatureRepository();
-      signatureRepository.setPagination(req.pagination);
-      const signatures = await signatureRepository.findAll();
+      //signatureRepository.setPagination(req.pagination);
+      const signatures = await signatureRepository.findAll(req.pagination.queries);
 
       return res.json(
         utils.parsePagination.default(
@@ -57,7 +57,7 @@ class SignatureController {
     } catch (e) {
       return res.json({
         errorMessage: "Error getting the signatures"
-      });
+      }).status(500);
     }
   }
 
@@ -72,7 +72,7 @@ class SignatureController {
     } catch (e) {
       return res.json({
         errorMessage: "Error updating the signature"
-      });
+      }).status(500);
     }
   }
 }
