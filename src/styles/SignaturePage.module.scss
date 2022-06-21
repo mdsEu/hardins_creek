@@ -21,7 +21,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
 
@@ -40,7 +40,7 @@
 
 .wrap_content {
   position: relative;
-  margin: 100px auto 0;
+  margin: 10px auto 0;
   width: 94%;
   max-width: 720px;
   @include breakpointSmMin() {
@@ -137,8 +137,8 @@
     @include fsize(0.52);
     letter-spacing: 0px;
     @include breakpointSmMin() {
-      @include fsize(0.9);
-      letter-spacing: 1px;
+      @include fsize(0.82);
+      letter-spacing: 0px;
     }
     @include breakpointXlMin() {
       @include fsize(0.75);
