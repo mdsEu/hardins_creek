@@ -1,13 +1,14 @@
 import { createStore, createHook } from 'react-sweet-state';
 import { getLocalStorage } from '@/utils/storage';
 
-type State = { signatures: Array<any> };
+type State = { signatures: Array<any>, isLoading: boolean };
 type Actions = typeof actions;
 
 const name = 'Images'
 
 const initialState = {
   signatures: [],
+  isLoading: false
 };
 
 const actions = {
@@ -27,10 +28,12 @@ const actions = {
 
     return null;
   },
-  get: () => async ({ setState } : {getState: any, setState: any}) => {
+  getByStatus: (status : string) => async ({ setState } : {getState: any, setState: any}) => {
     const token = getLocalStorage('token');
+    const approved = status === 'pending' ? 'null' : status === 'approved';
+    setState({ isLoading: true });
 
-    const request = await fetch('../api/signatures', {
+    const request = await fetch(`../api/signatures?query="{\\"approved\\":${approved}}"`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -40,10 +43,10 @@ const actions = {
 
     if (request.status === 200) {
       const signatures = await request.json();
-      setState({ signatures: signatures.signatures });
+      setState({ signatures: signatures.signatures, isLoading: false });
+    } else {
+      setState({ isLoading: false });
     }
-
-    return null;
   },
   updateStatus: (id: string, status:string) => async ({ setState, getState } : {getState: any, setState: any}) => {
     const token = getLocalStorage('token');

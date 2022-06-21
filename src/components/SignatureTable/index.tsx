@@ -5,48 +5,26 @@ import {Table} from 'react-bootstrap';
 import Header from './Components/Header';
 import SignatureRows from './Components/SignatureRows';
 
+import useSignature from 'src/hooks/signatureHook';
 const HEADERS = ['#', 'signature', 'status', 'created at','actions'];
 
-type Filters = {
-  signatures: any[],
-  filter: any,
-}
 
-function SignatureTable({signatures, filter} : Filters) {
-
-  const [filteredSignatures, setFilteredSignatures] = useState(signatures);
-
-  useEffect(() => {
-    // only filter signature Approved
-    // if filter.approved is true and filter.rejected is false => only approved===true
-    // if filter.approved is false and filter.rejected is true => only approved===false
-    // else not filter
-
-    if(filter.approved !== filter.rejected) {
-      setFilteredSignatures(() => {
-        return signatures.filter(signature => {
-          return filter.approved && !filter.rejected ? signature.approved === true : signature.approved === false;
-        });
-      });
-
-    } else {
-      setFilteredSignatures(signatures);
-    }
-
-  }, [signatures, filter]);
+function SignatureTable({signature} : {signature: Array<any>}) {
+  const {updateStatus} = useSignature(false);
 
   return (
     <Table striped bordered hover variant="dark">
       <Header headers={HEADERS} />
       <tbody>
-        {filteredSignatures && filteredSignatures.map((signature, index) => (
+        {signature && signature.map((signature, index) => (
           <SignatureRows
           key={index as number}
           index={index as number}
           id={signature._id}
           signature={signature.url}
-          status={signature.approved ? 'approved' : 'rejected'}
+          status={signature.approved ? 'approved' : signature.approved === null ? 'pending' : 'rejected'}
           createdAt={signature.created_at}
+          updateStatus={updateStatus}
         />
         ))}
       </tbody>
