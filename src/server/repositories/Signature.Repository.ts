@@ -5,7 +5,7 @@ import { ISignature } from "../types/Signature";
 class SignatureRepository {
   #signature: ISignature;
   #url = "";
-  #approved = false;
+  #approved : boolean | null= null;
   #updatedAt!: Date;
   #limit: number = 0;
   #skip: number = 0;
@@ -76,7 +76,7 @@ class SignatureRepository {
     this.#url = url;
   }
 
-  setApproved(approved:boolean) : void {
+  setApproved(approved:boolean | null) : void {
     this.#approved = approved;
   }
 
@@ -108,7 +108,7 @@ class SignatureRepository {
     return this.#url;
   }
 
-  getApproved() : boolean {
+  getApproved() : boolean | null {
     return this.#approved;
   }
 
