@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import SignaturePad from 'react-signature-pad-wrapper';
@@ -9,12 +9,10 @@ import styles from '../../styles/Signature.module.scss';
 
 import signatureHook from "./hooks/SignatureHook";
 
-import { PublicityWaiverModal } from '@/components/modal';
 import { IModal } from '../../customTypes';
 function Signature(props: any) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const { storeAction, setSignature } = props;
-  const [showConsent, setShowConsent] = useState(false);
+  const { storeAction, setSignature, setShowConsent } = props;
 
   const {
     isErrorTerms,
@@ -28,12 +26,6 @@ function Signature(props: any) {
     onChangeConsent,
     alertSignatureEmpty,
   } = signatureHook(storeAction, setSignature)
-
-  const modalConcent: IModal = {
-    title: 'Publicity Waiver and Release:',
-    message: '',
-    width: 600,
-  };
 
   return (
     <div className={styles.comp_signature}>
@@ -90,7 +82,6 @@ function Signature(props: any) {
         <span className="text_submit">SUBMIT</span>
         <span className="btn_round" title="Submit">→</span>
       </button>
-      {showConsent && <PublicityWaiverModal modal={modalConcent} setShowConsent={setShowConsent} />}
     </div>
   )
 }
@@ -98,6 +89,7 @@ function Signature(props: any) {
 Signature.propTypes = {
   storeAction: PropTypes.object,
   setSignature: PropTypes.func,
+  setShowConsent: PropTypes.func,
 }
 
 export default Signature

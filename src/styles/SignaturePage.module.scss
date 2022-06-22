@@ -6,9 +6,12 @@
     background-image: url('../../public/images/page-signature/bg.png');
     background-position: center;
     justify-content: center;
+    justify-content: space-between;
   }
   @include breakpointXlMin() {
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-top: 120px;
+    padding-bottom: 20px;
   }
   background-color: transparent;
   background-repeat: no-repeat;
@@ -21,7 +24,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  padding-top: 100px;
+  padding-bottom: 20px;
   align-items: center;
   overflow: hidden;
 
@@ -53,8 +58,8 @@
   .wrap_logo {
     position: relative;
     margin: 0 auto;
-    width: 130px;
-    height: 29.5px;
+    width: 150px;
+    height: 34px;
     margin-bottom: 20px;
     @include breakpointSmMin() {
       width: 200px;
@@ -84,7 +89,7 @@
       letter-spacing: 0.8px;
     }
     color: var(--text-primary-color);
-    margin: 0 0 10px 0;
+    margin: 0;
     font-weight: 300;
   }
   & > p {
@@ -111,12 +116,12 @@
   justify-content: center;
   z-index: 100;
   padding: 0 10px;
-  max-width: 1200px;
+  max-width: 1240px;
   @include breakpointSmMin() {
     padding: 0;
   }
   @include breakpointXlMin() {
-    padding: 0 108px;
+    padding: 0 38px;
   }
   .link_logo {
     width: 82px;
@@ -141,7 +146,7 @@
       letter-spacing: 0px;
     }
     @include breakpointXlMin() {
-      @include fsize(0.75);
+      @include fsize(0.88);
       letter-spacing: 0px;
     }
     color: var(--text-primary-color);
