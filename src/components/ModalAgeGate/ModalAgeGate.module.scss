@@ -30,7 +30,7 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    padding: 12% 16px 4%;
+    padding: 60px 16px 30px;
     @include breakpointSmMin() {
       padding: 4% 100px 1.5% 100px;
     }
@@ -46,8 +46,8 @@
     .wrap_logo {
       position: relative;
       margin: 0 auto;
-      width: 106px;
-      height: 24px;
+      width: 150px;
+      height: 34px;
       @include breakpointSmMin() {
         width: 200px;
         height: 45.4px;
@@ -310,22 +310,23 @@
           height: 27px;
         }
         display: block;
-        margin: 0 0 10px 0;
+        margin: 40px 0 10px 0;
         img {
           height: auto;
           width: 100%;
         }
       }
       .text_terms {
-        margin: 0;
+        margin:0;
         @include fsize(0.6);
-        letter-spacing: 0.4px;
+        letter-spacing: 0;
         @include breakpointSmMin() {
-          @include fsize(0.8);
-          letter-spacing: 1px;
+          @include fsize(0.7);
+          letter-spacing: 0.5px;
         }
         color: var(--text-primary-color);
         a {
+          text-decoration: underline;
           &:hover {
             text-decoration: underline;
           }

@@ -12,11 +12,13 @@ import { URLS } from '../../helpers';
 
 import logo from '@/public/images/modal-age-gate/logo_hardinscreek.png';
 import drinkSmart from '@/public/images/modal-age-gate/drink_smart.svg';
-
+import { useMediaQuery } from 'react-responsive'
 
 import {handleToggleDisplay} from '@/utils/optanonFunction';
 
 function ModalAgeGate(props: any) {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   const { open, storeAction, withBackground, setAgeError } = props;
   const {
     day,
@@ -139,7 +141,7 @@ function ModalAgeGate(props: any) {
               <a href={URLS.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>,&nbsp;
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a> &&nbsp;
               <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;
-              <br />
+              {isMobile ? <br /> : <>-&nbsp;</>}
               <a href="javascript:void(0);" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
               </p>
           </div>

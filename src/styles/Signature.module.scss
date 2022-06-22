@@ -44,7 +44,7 @@
       padding: 0 2%;
     }
     @include breakpointXlMin() {
-      padding: 0 40px;
+      padding: 0 20px;
     }
     display: table;
     width: 100%;
@@ -64,6 +64,7 @@
         word-spacing: 0px;
       }
       @include breakpointXlMin() {
+        @include fsize(0.9);
         letter-spacing: 0.4px;
       }
       .term {

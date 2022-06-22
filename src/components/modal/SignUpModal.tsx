@@ -10,12 +10,11 @@ type Props = {
 
 const Modal: React.FC<Props> = ({ modal, noThanks }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isDesktop = useMediaQuery({ minWidth: 1199 });
   const urlSignUp = 'https://www.beamdistilling.com/sign-up';
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '500'}px`}}>
+      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '600'}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>
