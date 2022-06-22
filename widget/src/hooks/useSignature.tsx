@@ -7,23 +7,26 @@ import Image from '../components/Image';
 import * as signatureStore from '../store/signatureStore';
 
 function useSignatures() {
-  const [signatures, setSignatures] = useState([]);
+  const [signatures, setSignatures] = useState(Array<any>);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-
-    const loadImages = async () => {
+    const timeParameter = setInterval(async () => {
       const images = await signatureStore.loadImages(page);
-      setSignatures(images.signatures);
+      const newSignatures = [...signatures, ...images.signatures as Array<any>];
+      setSignatures(newSignatures);
 
-      /*if (images.total && images.total === 10) {
-        setPage(images.page);
-      }*/
+      if (images.total !== 0) {
+        setPage(page + 1);
+      } else {
+        clearInterval(timeParameter)
+      }
+    }, 1000);
 
+    return () => {
+      clearInterval(timeParameter)
     }
-
-    loadImages();
-  }, []);
+  }, [page]);
 
 
   const printImages = () : any => {
