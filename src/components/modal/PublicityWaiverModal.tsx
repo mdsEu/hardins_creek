@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '@/styles/Modal.module.scss';
 import { IModal } from '../../customTypes';
+import { useMediaQuery } from 'react-responsive'
 
 type Props = {
   modal: IModal,
@@ -8,6 +9,7 @@ type Props = {
 }
 
 const Modal: React.FC<Props> = ({ modal, setShowConsent }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const handleCloseModal = () => {
     setShowConsent(false);
@@ -15,7 +17,7 @@ const Modal: React.FC<Props> = ({ modal, setShowConsent }) => {
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal}>
+      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '720'}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>

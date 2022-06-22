@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from '../styles/SignaturePage.module.scss'
 
 import Signature from '../components/Signature';
-import { SignUpModal, SignatureModal } from '@/components/modal';
+import { SignUpModal, SignatureModal, PublicityWaiverModal } from '@/components/modal';
 import { IModal } from '../customTypes';
 
 import imageStore from '../store/imageStore';
@@ -27,8 +27,14 @@ const modalSignUp: IModal = {
 };
 
 const modalSignature: IModal = {
-  title: 'You signature has been recorded.',
+  title: 'Your signature has been recorded.',
   message: 'Look for the symbol on the Hardin`s Creek website soon to see it etched into history.',
+  width: 350,
+};
+
+const modalConcent: IModal = {
+  title: 'Publicity Waiver and Release:',
+  message: '',
   width: 350,
 };
 
@@ -38,6 +44,7 @@ const SignaturePage: NextPage = () => {
   const [noThanks, setNoThanks] = useState(false);
   const [signatureRecord, setSignatureRecord] = useState(false);
   const [goAgeGate, setGoAgeGate] = useState(false);
+  const [showConsent, setShowConsent] = useState(false);
   const [documentStates] = documentStore();
 
   useEffect(() => {
@@ -70,7 +77,7 @@ const SignaturePage: NextPage = () => {
           </div>
           <h3>LEAVE YOUR MARK ON THE BEAM LEGACY</h3>
           <p>Your signature will be displayed as one of the few who have tasted Hardin’s Creek.</p>
-          <Signature storeAction={imgAction} setSignature={setSignatureRecord} />
+          <Signature storeAction={imgAction} setSignature={setSignatureRecord} setShowConsent={setShowConsent} />
         </div>
         <div className={styles.wrap_foot}>
             <a className={styles.link_logo} href={URLS.drink} target="_blank" rel="noreferrer">
@@ -95,6 +102,8 @@ const SignaturePage: NextPage = () => {
 
       {signatureRecord && <SignatureModal modal={modalSignature} setSignature={setSignatureRecord} setGoAgeGate={setGoAgeGate} />}
       {noThanks && <SignUpModal modal={modalSignUp} noThanks={setNoThanks} />}
+      {showConsent && <PublicityWaiverModal modal={modalConcent} setShowConsent={setShowConsent} />}
+
     </HcBody>
   )
 }
