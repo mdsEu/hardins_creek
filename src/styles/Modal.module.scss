@@ -32,11 +32,12 @@
   border: 1px solid var(--text-primary-color);
   background-color: #0b1319;
   padding: 16px;
+
   @include breakpointSmMin() {
-    padding: 36px;
+    padding: 26px;
   }
   @include breakpointXlMin() {
-    padding: 70px;
+    padding: 46px;
   }
   opacity: 1;
   animation: fadeInDown .2s linear;
@@ -58,11 +59,15 @@
   font-family: var(--font-benguiat_pro);
   font-weight: 400;
   @include fsize(1.3);
+
   @include breakpointSmMin() {
-    @include fsize(1.8);
+    @include fsize(1.6);
   }
   @include breakpointXlMin() {
-    @include fsize(2.9);
+    @include fsizevw(1.9);
+  }
+  @include breakpointXXlMin() {
+    @include fsizevw(1.5);
   }
   letter-spacing: 0px;
   color: var(--text-primary-color);
@@ -82,11 +87,11 @@
   @include fsize(0.76);
   padding: 0 14px;
   @include breakpointSmMin() {
-    @include fsize(0.86);
+    @include fsize(0.8);
     padding: 0;
   }
   @include breakpointXlMin() {
-    @include fsize(1.26);
+    @include fsizevw(.9);
     letter-spacing: 0;
     padding: 0;
   }
@@ -95,11 +100,11 @@
   text-align: center;
   &.sign {
     @include fsize(1.1);
-    @include breakpointSmMin() {
-      @include fsize(1.8);
+    @include breakpointMdMin() {
+      @include fsize(1.4);
     }
     @include breakpointXlMin() {
-      @include fsize(1.8);
+      @include fsize(1.5);
       letter-spacing: 1px;
     }
     margin-bottom: 38px;
@@ -127,7 +132,7 @@
   text-transform: uppercase;
   @include fsize(1.0);
   @include breakpointXlMin() {
-    @include fsize(1.8);
+    @include fsize(1.4);
   }
   border-bottom-width: 1px;
   margin-top: 10px;

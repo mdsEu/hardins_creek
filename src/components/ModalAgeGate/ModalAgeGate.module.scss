@@ -2,7 +2,7 @@
 
 .background {
   background-image: url('../../../public/images/modal-age-gate/bg-mobile.png');
-  @include breakpointSmMin() {
+  @include breakpointMdMin() {
     background-image: url('../../../public/images/modal-age-gate/bg.png');
   }
   background-color: transparent;
@@ -27,31 +27,37 @@
   .panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     overflow: hidden;
-    padding: 60px 16px 30px;
-    @include breakpointSmMin() {
-      padding: 4% 100px 1.5% 100px;
+    padding: 8% 16px 1.5%;
+    @include breakpointMdMin() {
+      padding: 4% 4% 1.5% 4%;
     }
     background-color: var(--bg-primary-color);
-    border: 2px solid var(--text-primary-color);
-    max-width: 784px;
+    border: 1px solid var(--text-primary-color);
+    max-width: 720px;
     width: 94%;
-    @include breakpointSmMin() {
-      width: 98%;
-    }
     z-index: 1001;
-  
+
+    @include breakpointXlMin() {
+      width: 60vw;
+      height: 40vw;
+      max-width: inherit;
+    }
+
     .wrap_logo {
       position: relative;
       margin: 0 auto;
-      width: 150px;
-      height: 34px;
-      @include breakpointSmMin() {
-        width: 200px;
-        height: 45.4px;
-        margin-bottom: 30px;
+      width: 114px;
+      height: 25.9px;
+      @include breakpointMdMin() {
+        width: 130px;
+        height: 29.5px;
+      }
+      @include breakpointXlMin() {
+        width: 150px;
+        height: 34px;
       }
       overflow: hidden;
       text-align: center;
@@ -67,15 +73,15 @@
       text-align: center;
       @include fsize(2.1);
       margin: 5px 0 30px 0;
-      @include breakpointSmMin() {
+      @include breakpointMdMin() {
         @include fsize(2.5);
       }
     }
     & > h4 {
       text-align: center;
       margin: 20px 0;
-      @include breakpointSmMin() {
-        margin: 5px 0 50px 0;
+      @include breakpointMdMin() {
+        margin: 25px 0 30px 0;
       }
 
       &.error {
@@ -89,11 +95,11 @@
         color: var(--text-primary-color);
         text-align: center;
         @include fsize(2);
-        @include breakpointSmMin() {
+        @include breakpointMdMin() {
           @include fsize(3);
         }
         @include breakpointXlMin() {
-          @include fsize(3.4);
+          @include fsizevw(3.4);
         }
       }
       span.title__secondary {
@@ -104,11 +110,11 @@
         text-align: center;
         letter-spacing: 1px;
         @include fsize(1.2);
-        @include breakpointSmMin() {
+        @include breakpointMdMin() {
           @include fsize(1.6);
         }
         @include breakpointXlMin() {
-          @include fsize(1.9);
+          @include fsizevw(1.9);
         }
       }
     }
@@ -116,31 +122,32 @@
       color: var(--text-primary-color);
       text-align: center;
       display: block;
-      margin: 5px 0 15px 0;
+      margin: 5px 0 5px 0;
       letter-spacing: 2.5px;
+      @include fsize(0.8);
+
       @include breakpointXlMin() {
-        @include fsize(1.3);
+        @include fsizevw(1.3);
+        letter-spacing: .3vw;
       }
     }
     :global .text_error {
       font-size: 0.7rem;
       letter-spacing: 1.5px;
-      @include breakpointSmMin() {
+      @include breakpointMdMin() {
         font-size: 0.9rem;
-        //width: 56%;
       }
       text-align: center;
       margin: 0 auto;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       color: var(--text-primary-color);
     }
     .container_input {
       border: 1px solid var(--text-primary-color);
-      margin-bottom: 28px;
-      @include breakpointSmMin() {
-        margin-bottom: 52px;
+      margin-bottom: 10px;
+      @include breakpointMdMin() {
+        margin-bottom: 32px;
       }
-      width: 100%;
       .wrap_inputs {
         display: flex;
         width: 100%;
@@ -154,9 +161,9 @@
             height: 100px;
           }
           @include breakpointXlMin() {
-            height: 120px;
+            width: 17vw;
+            height: 7vw;
           }
-          //width: 33.33333%;
           .dots {
             position: relative;
             height: 60%;
@@ -168,7 +175,7 @@
               width: 100%;
             }
           }
-  
+
           input {
             font-family: inherit;
             appearance: none;
@@ -185,7 +192,7 @@
               @include fsize(1.8);
             }
             @include breakpointXlMin() {
-              @include fsize(2.3);
+              @include fsizevw(2.3);
             }
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
@@ -202,12 +209,12 @@
               -webkit-border-radius:0;
               -webkit-tap-highlight-color: transparent;
             }
-  
+
             &:focus-visible {
               outline: var(--text-primary-color) dotted 1px;
               outline-offset: 1px;
             }
-  
+
             &::-webkit-input-placeholder {
               color: var(--text-primary-color);
             }
@@ -222,7 +229,7 @@
             }
           }
         }
-  
+
       }
       button {
         @include fsize(1);
@@ -233,18 +240,18 @@
         align-items: center;
         justify-content: center;
         padding: 10px;
+        @include breakpointSmMin() {
+          @include fsize(1.5);
+        }
         @include breakpointXlMin() {
           padding: 15px;
-          @include fsize(1.55);
+          @include fsizevw(1.55);
         }
         border: 1px solid var(--text-primary-color);
         background-color: var(--text-primary-color);
         color: var(--bg-primary-color);
         width: 100%;
         cursor: pointer;
-        @include breakpointSmMin() {
-          @include fsize(1.5);
-        }
         &:focus-visible {
           outline: var(--bg-primary-color) dashed 2px;
           outline-offset: -4px;
@@ -253,9 +260,9 @@
           margin-left: 5px;
         }
       }
-  
+
     }
-  
+
     .wrap_remember_me {
       display: flex;
       justify-content: flex-end;
@@ -295,7 +302,7 @@
         }
       }
     }
-  
+
     .wrap_logo_foot {
       text-align: center;
       display: flex;
@@ -310,7 +317,7 @@
           height: 27px;
         }
         display: block;
-        margin: 40px 0 10px 0;
+        margin: 10px 0;
         img {
           height: auto;
           width: 100%;
@@ -318,15 +325,21 @@
       }
       .text_terms {
         margin:0;
-        @include fsize(0.6);
+        @include fsize(0.65);
         letter-spacing: 0;
+
         @include breakpointSmMin() {
           @include fsize(0.7);
           letter-spacing: 0.5px;
         }
+
+        @include breakpointXlMin() {
+          @include fsizevw(0.8);
+          letter-spacing: 0.5px;
+        }
+
         color: var(--text-primary-color);
         a {
-          text-decoration: underline;
           &:hover {
             text-decoration: underline;
           }
