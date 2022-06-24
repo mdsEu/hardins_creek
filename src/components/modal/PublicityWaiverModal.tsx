@@ -17,7 +17,7 @@ const Modal: React.FC<Props> = ({ modal, setShowConsent }) => {
 
   return (
     <div className={styles.modal__overlay}>
-      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '720'}px`}}>
+      <div className={styles.modal} style={{width: `${isMobile ? modal.width : '760'}px`}}>
         {modal.title && (
           <>
             <h4>{modal.title}</h4>
