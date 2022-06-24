@@ -51,6 +51,7 @@
       margin: 0 auto;
       width: 114px;
       height: 25.9px;
+
       @include breakpointMdMin() {
         width: 130px;
         height: 29.5px;
