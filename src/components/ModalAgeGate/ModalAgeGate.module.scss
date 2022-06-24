@@ -41,8 +41,8 @@
     z-index: 1001;
 
     @include breakpointXlMin() {
-      width: 60vw;
-      height: 40vw;
+      width: 55vw;
+      height: 45vw;
       max-width: inherit;
     }
 
@@ -53,13 +53,10 @@
       height: 25.9px;
 
       @include breakpointMdMin() {
-        width: 130px;
-        height: 29.5px;
+        width: 12vw;
+        height: 4vw;
       }
-      @include breakpointXlMin() {
-        width: 150px;
-        height: 34px;
-      }
+
       overflow: hidden;
       text-align: center;
       img {
@@ -162,7 +159,7 @@
             height: 100px;
           }
           @include breakpointXlMin() {
-            width: 17vw;
+            width: 15vw;
             height: 7vw;
           }
           .dots {

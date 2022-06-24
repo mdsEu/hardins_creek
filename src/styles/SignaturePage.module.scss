@@ -74,9 +74,8 @@
     }
 
     @include breakpointMdMin() {
-      width: 150px;
-      height: 34px;
-      margin-bottom: 30px;
+      width: 12vw;
+      height: 4vw;
     }
 
     overflow: hidden;
@@ -124,14 +123,14 @@
   justify-content: center;
   z-index: 100;
   padding: 0 10px;
-  max-width: 992px;
+  max-width: 1200px;
   margin-top: 10px;
   @include breakpointSmMin() {
     padding: 0;
     margin-top: 0;
   }
   @include breakpointXlMin() {
-    padding: 0 38px;
+    padding: 0 28px;
   }
   .link_logo {
     width: 82px;
