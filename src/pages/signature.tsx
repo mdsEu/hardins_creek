@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router';
 import { useState, useEffect }  from 'react';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive'
 
 import styles from '../styles/SignaturePage.module.scss'
 
@@ -40,6 +41,8 @@ const modalConcent: IModal = {
 
 const SignaturePage: NextPage = () => {
   const router = useRouter();
+  const isDesktop = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [imgState, imgAction] = imageStore();
   const [noThanks, setNoThanks] = useState(false);
   const [signatureRecord, setSignatureRecord] = useState(false);
@@ -88,13 +91,14 @@ const SignaturePage: NextPage = () => {
               height={27}
             />
             </a>
-            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654. - ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. – HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.<br />
+            <p className={styles.text_terms}>BEAM SUNTORY INC. – MERCHANDISE MART, 222 W. MERCHANDISE MART PLAZA SUITE 1600, CHICAGO, IL 60654. - ©2022 JAMES B. BEAM DISTILLING CO., CLERMONT, KY. {!isMobile ? <br /> : <>-&nbsp;</>}HARDIN’S CREEK™ KENTUCKY STRAIGHT BOURBON WHISKEY, 54% ALC./VOL.<br />
               <a href={URLS.contact} target="_blank" rel="noreferrer">CONTACT US</a>&nbsp;-&nbsp;
               <a href={URLS.privacity} target="_blank" rel="noreferrer">PRIVACY POLICY</a>&nbsp;-&nbsp;
               <a href={URLS.cookies} target="_blank" rel="noreferrer">COOKIE POLICY</a>&nbsp;-&nbsp;
               <a href={URLS.terms} target="_blank" rel="noreferrer">TERMS AND CONDITIONS</a>&nbsp;-&nbsp;
               <a href={URLS.marketing} target="_blank" rel="noreferrer">MARKETING CODE</a>&nbsp;-&nbsp;
-              <a href={URLS.transparency} target="_blank" rel="noreferrer">SUPPLY CHAIN TRANSPARENCY</a>&nbsp;-&nbsp;
+              <a href={URLS.transparency} target="_blank" rel="noreferrer">SUPPLY CHAIN TRANSPARENCY</a>&nbsp;
+              {isMobile ? <br /> : <>-&nbsp;</>}
               <a href="#" onClick={handleToggleDisplay}>DO NOT SELL MY INFORMATION</a>
             </p>
         </div>

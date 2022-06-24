@@ -21,7 +21,10 @@ $grid-breakpoints: (
   line-height: $size + 0.2rem;
 }
 
-
+@mixin fsizevw($size) {
+  font-size: $size * 1vw;
+  line-height: $size + 0.2vw;
+}
 
 //Mediaqueries --------------------
 @mixin breakpointXXlMin {

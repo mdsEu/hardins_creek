@@ -1,18 +1,7 @@
 @import './variables.scss';
 
 .signature_page {
-  background-image: url('../../public/images/page-signature/bg-mobile.png');
-  @include breakpointSmMin() {
-    background-image: url('../../public/images/page-signature/bg.png');
-    background-position: center;
-    justify-content: center;
-    justify-content: center;
-  }
-  @include breakpointXlMin() {
-    justify-content: space-between;
-    padding-top: 120px;
-    padding-bottom: 20px;
-  }
+  background-image: url('../../public/images/page-signature/bg.png');
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,9 +13,23 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   overflow: hidden;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+
+  @include breakpointMdMin() {
+    padding-top: 8vh;
+    padding-bottom: 2vh;
+  }
+
+  @include breakpointXlMin() {
+    padding-top: 10vh;
+    justify-content: space-between;
+  }
+
+
 
   &::after {
     content: '';
@@ -46,7 +49,7 @@
   margin: 10px auto 0;
   width: 94%;
   max-width: 720px;
-  @include breakpointSmMin() {
+  @include breakpointMdMin() {
     margin: 0 auto;
     width: 98%;
     max-width: 800px;
@@ -56,17 +59,25 @@
   .wrap_logo {
     position: relative;
     margin: 0 auto;
-    width: 150px;
-    height: 34px;
+    width: 114px;
+    height: 25.9px;
     margin-bottom: 20px;
+
     @include breakpointSmMin() {
-      width: 200px;
-      height: 45.4px;
+      width: 130px;
+      height: 29.5px;
+      margin-bottom: 60px;
+    }
+
+    @include breakpointMdMin() {
+      width: 150px;
+      height: 34px;
       margin-bottom: 30px;
     }
+
     @include breakpointXlMin() {
-      width: 280px;
-      height: 63.6px;
+      width: 160px;
+      height: 36.3px;
       margin-bottom: 40px;
     }
     overflow: hidden;
@@ -114,7 +125,7 @@
   justify-content: center;
   z-index: 100;
   padding: 0 10px;
-  max-width: 1240px;
+  max-width: 992px;
   margin-top: 50px;
   @include breakpointSmMin() {
     padding: 0;
