@@ -5,7 +5,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 62%;
+  background-position: 67%;
   position: relative;
   left: 0;
   top: 0;
@@ -20,6 +20,7 @@
   padding-bottom: 4vh;
 
   @include breakpointMdMin() {
+    justify-content: space-around;
     padding-top: 8vh;
     padding-bottom: 2vh;
   }
@@ -46,11 +47,11 @@
 
 .wrap_content {
   position: relative;
-  margin: 10px auto 0;
+  margin: -22px auto 0;
   width: 94%;
   max-width: 720px;
   @include breakpointMdMin() {
-    margin: 0 auto;
+    margin: 10px auto 0;
     width: 98%;
     max-width: 800px;
   }
@@ -75,11 +76,6 @@
       margin-bottom: 30px;
     }
 
-    @include breakpointXlMin() {
-      width: 160px;
-      height: 36.3px;
-      margin-bottom: 40px;
-    }
     overflow: hidden;
     text-align: center;
     img {
@@ -126,7 +122,7 @@
   z-index: 100;
   padding: 0 10px;
   max-width: 992px;
-  margin-top: 50px;
+  margin-top: 10px;
   @include breakpointSmMin() {
     padding: 0;
     margin-top: 0;
@@ -151,7 +147,7 @@
   .text_terms {
     margin: 0;
     @include fsize(0.52);
-    letter-spacing: 0px;
+    letter-spacing: -0.3px;
     @include breakpointSmMin() {
       @include fsize(0.82);
       letter-spacing: 0px;
