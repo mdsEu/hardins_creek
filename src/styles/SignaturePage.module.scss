@@ -50,7 +50,7 @@
 
 .wrap_content {
   position: relative;
-  margin: -22px auto 0;
+  margin: 0 auto;
   width: 94%;
   max-width: 720px;
   @include breakpointMdMin() {
@@ -74,9 +74,13 @@
     }
 
     @include breakpointMdMin() {
-      width: 150px;
-      height: 34px;
-      margin-bottom: 30px;
+      width: 12vw;
+      height: 4vw;
+    }
+
+    @include breakpointXXlMin() {
+      width: 203px;
+      height: 46.1;
     }
 
     overflow: hidden;
@@ -123,15 +127,15 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  padding: 0 10px;
-  max-width: 992px;
-  margin-top: 10px;
+  padding: 10px;
+  max-width: 1200px;
+  margin-top: 0 auto;
   @include breakpointSmMin() {
     padding: 0;
-    margin-top: 0;
   }
   @include breakpointXlMin() {
-    padding: 0 38px;
+    max-width: inherit;
+    padding: 0 28px;
   }
   .link_logo {
     width: 82px;
@@ -156,7 +160,11 @@
       letter-spacing: 0px;
     }
     @include breakpointXlMin() {
-      @include fsize(0.88);
+      @include fsizevw(1);
+      letter-spacing: 0px;
+    }
+    @include breakpointXXlMin() {
+      @include fsize(1.15);
       letter-spacing: 0px;
     }
     color: var(--text-primary-color);
