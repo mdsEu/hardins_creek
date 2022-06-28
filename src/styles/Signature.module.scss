@@ -77,7 +77,7 @@
       }
 
       @include breakpointHeightDevice() {
-        @include fsize(0.82);
+        @include fsize(0.62);
         letter-spacing: 0;
         word-spacing: 0px;
       }
