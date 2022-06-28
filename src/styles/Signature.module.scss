@@ -10,6 +10,10 @@
     }
     margin-bottom: 20px;
 
+    @include breakpointHeightDevice() {
+      margin-bottom: 15px;
+    }
+
     .clear_panel {
       height: 120px - (90px + 2px + 5px);
       padding: 0;
@@ -54,7 +58,6 @@
     display: table;
     width: 100%;
     label {
-      display: flex;
       position: relative;
       margin-bottom: 5px;
       color: var(--text-primary-color);
@@ -71,6 +74,12 @@
       @include breakpointXlMin() {
         @include fsize(0.9);
         letter-spacing: 0.4px;
+      }
+
+      @include breakpointHeightDevice() {
+        @include fsize(0.82);
+        letter-spacing: 0;
+        word-spacing: 0px;
       }
       .term {
         margin-top: 0;
