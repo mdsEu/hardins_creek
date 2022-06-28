@@ -22,6 +22,12 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  @include breakpointHeightDevice() {
+    height: inherit;
+    padding: 90px 0;
+  }
+
+
 
   .panel {
     display: flex;
