@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image'
 import PropTypes from 'prop-types';
 
-import styles from './ModalAgeGate.module.scss';
+import styles from '@/styles/ModalAgeGate.module.scss';
 
 import useModalAgeGateHook from "./hooks/ModalAgeGateHook";
 
@@ -86,7 +86,6 @@ function ModalAgeGate(props: any) {
                     maxLength={2}
                     ref={inputMonthRef}
                   />
-                  <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
               <div className={styles.wrap_input}>
@@ -104,7 +103,6 @@ function ModalAgeGate(props: any) {
                     maxLength={2}
                     ref={inputDayRef}
                     />
-                  <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
               <div className={styles.wrap_input}>
@@ -121,7 +119,6 @@ function ModalAgeGate(props: any) {
                     maxLength={4}
                     ref={inputYearRef}
                   />
-                  <svg width="182" height="1" viewBox="0 0 182 1" fill="none"><line x1="0.268066" y1="0.377425" x2="181.786" y2="0.377425" stroke="#DBCAAF" strokeWidth="0.587069" strokeDasharray="6.46 6.46"/></svg>
                 </div>
               </div>
             </div>

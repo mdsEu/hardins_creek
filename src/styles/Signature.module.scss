@@ -13,6 +13,7 @@
     .clear_panel {
       height: 120px - (90px + 2px + 5px);
       padding: 0;
+      transition: .6s ease-in-out;
       @include breakpointMdMin() {
         height: 200px - (160px + 2px + 5px);
         padding: 5px 0;
@@ -22,7 +23,6 @@
       text-align: right;
       border-top: 2px solid var(--text-primary-color);
       width: 94%;
-      animation: 2s linear;
       &.error {
         border-top: 2px solid var(--text-color-error);
       }
@@ -46,6 +46,10 @@
     }
     @include breakpointXlMin() {
       padding: 0 20px;
+    }
+    @include breakpointHeightMax() {
+      margin: 0 auto 10px auto;
+      padding: 0 10px;
     }
     display: table;
     width: 100%;

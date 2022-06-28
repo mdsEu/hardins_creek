@@ -46,6 +46,16 @@
     padding-top: 10vh;
     justify-content: space-between;
   }
+
+  @include breakpointHeightMax() {
+    padding-top: 0;
+    justify-content: center;
+  }
+
+  @include breakpointHeightDevice() {
+    padding-top: 4vh;
+    justify-content: start;
+  }
 }
 
 .wrap_content {
@@ -81,6 +91,10 @@
     @include breakpointXXlMin() {
       width: 203px;
       height: 46.1;
+    }
+
+    @include breakpointHeightMax() {
+      margin-bottom: 20px;
     }
 
     overflow: hidden;
@@ -156,7 +170,7 @@
     @include fsize(0.52);
     letter-spacing: -0.3px;
     @include breakpointSmMin() {
-      @include fsize(0.82);
+      @include fsize(0.80);
       letter-spacing: 0px;
     }
     @include breakpointXlMin() {
@@ -167,6 +181,11 @@
       @include fsize(1.15);
       letter-spacing: 0px;
     }
+
+    @include breakpointHeightDevice() {
+      padding: 0 30px;
+    }
+
     color: var(--text-primary-color);
     a {
       &:hover {
