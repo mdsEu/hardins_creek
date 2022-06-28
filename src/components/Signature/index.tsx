@@ -48,9 +48,6 @@ function Signature(props: any) {
       <div className={styles.wrap_accept_terms}>
         <label className={isErrorTerms ? styles.error : ''}>
           <input type="checkbox" name="" id="" defaultValue={acceptedTerms ? "true" : "false"} checked={acceptedTerms} onChange={onChangeTerms} />
-          {/* <span className={styles.icon_check}>
-            <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          </span> */}
           <span className={`${styles.term} ${isErrorTerms ? styles.error_terms : ''}`}>
             *I consent to the collection and processing of my personal data in line with the Beam Suntory <Link href={'https://www.beamsuntory.com/index.php/en/privacy-policy'}>
               <a target="_blank">
@@ -63,9 +60,6 @@ function Signature(props: any) {
       <div className={styles.wrap_accept_terms}>
         <label className={isErrorConsent ? styles.error : ''}>
           <input type="checkbox" name="" id="" defaultValue={acceptedConsent ? "true" : "false"} checked={acceptedConsent} onChange={onChangeConsent} />
-          {/* <span className={styles.icon_check}>
-            <svg height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          </span> */}
           <span className={`${styles.term} ${styles.term_secondary} ${isErrorConsent ? styles.error_terms : ''}`}>
               *I consent to the use of my signature on this website for advertising, promotion, and other commercial purposes, according to the terms of BSI’s <Link href={'https://www.beamsuntory.com/index.php/en/privacy-policy'}>
               <a onClick={(e) => {

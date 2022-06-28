@@ -12,14 +12,13 @@
 }
 
 .age_gate_page {
-  position: relative;
+  position: absolute;
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   z-index: 100;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -35,7 +34,7 @@
       padding: 4% 4% 1.5% 4%;
     }
     @include breakpointHeightDevice() {
-      padding: 1.5%;
+      padding: 1.5% 4%;
     }
     background-color: var(--bg-primary-color);
     border: 1px solid var(--text-primary-color);
@@ -106,7 +105,7 @@
           @include fsizevw(3.4);
         }
         @include breakpointHeightDevice() {
-          @include fsize(2.4);
+          @include fsize(2.0);
         }
       }
       span.title__secondary {
@@ -124,7 +123,7 @@
           @include fsizevw(1.9);
         }
         @include breakpointHeightDevice() {
-          @include fsize(1.3);
+          @include fsize(1.0);
         }
       }
     }
@@ -254,7 +253,9 @@
           @include fsizevw(1.55);
         }
         @include breakpointHeightDevice() {
-          @include fsize(1.1);
+          margin-bottom: 25px;
+          @include fsize(0.9);
+
         }
         border: 1px solid var(--text-primary-color);
         background-color: var(--text-primary-color);
@@ -345,6 +346,10 @@
         @include breakpointXlMin() {
           @include fsizevw(0.8);
           letter-spacing: 0.5px;
+        }
+
+        @include breakpointHeightDevice() {
+          @include fsize(0.5);
         }
 
         color: var(--text-primary-color);

@@ -151,6 +151,9 @@
     max-width: inherit;
     padding: 0 28px;
   }
+  @include breakpointHeightDevice() {
+    padding: 10px 0;
+  }
   .link_logo {
     width: 82px;
     height: 20px;
@@ -158,6 +161,12 @@
       width: 111px;
       height: 27px;
     }
+
+    @include breakpointHeightDevice() {
+      width: 82px;
+      height: 20px;
+    }
+
     display: block;
     margin: 15px 0;
     img {
@@ -183,6 +192,8 @@
     }
 
     @include breakpointHeightDevice() {
+      @include fsize(0.52);
+      letter-spacing: -0.3px;
       padding: 0 30px;
     }
 
