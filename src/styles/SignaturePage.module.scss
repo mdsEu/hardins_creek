@@ -49,7 +49,6 @@
 
   @include breakpointHeightMax() {
     padding-top: 0;
-    justify-content: center;
   }
 
   @include breakpointHeightDevice() {
