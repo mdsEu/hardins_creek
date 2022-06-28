@@ -19,6 +19,10 @@
   --font-primary: "Creek Sans", "sans-serif";
   --font-benguiat_pro: "itc-benguiat-condensed", Times New Roman, serif;
 }
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -26,6 +30,8 @@ body {
   font-family: var(--font-primary);
   letter-spacing: 1.5px;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .admin {
@@ -40,10 +46,6 @@ a {
     outline: var(--text-primary-color) dashed 1px;
     outline-offset: 2px;
   }
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .text_error {
@@ -97,6 +99,9 @@ a {
   margin: 5px auto;
   @include breakpointXlMin() {
     margin-top: 30px;
+  }
+  @include breakpointHeightDevice() {
+    margin-bottom: 30px;
   }
   &::after {
     content: "";
