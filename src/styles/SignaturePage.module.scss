@@ -26,24 +26,36 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   overflow: hidden;
   overflow-y: auto;
-  padding: 80px 0;
+  padding: 10px 0;
 
   @include breakpointMdMin() {
     justify-content: space-around;
-    padding-top: 8vh;
     padding-bottom: 2vh;
   }
 
   @include breakpointXlMin() {
-    padding-top: 10vh;
     justify-content: space-between;
+    padding-bottom: 4vh;
+  }
+
+  @include breakpointXXlMin() {
+    padding-top: 10vh;
+    padding-bottom: 20vh;
+    justify-content: space-between;
+  }
+
+  @include breakpointXXXlMin() {
+    padding-top: 14vh;
+  }
+
+  @include breakpointPortrait() {
+    padding-bottom: 8vh;
   }
 
   @include breakpointHeightDevice() {
@@ -97,6 +109,12 @@
       margin-bottom: 10px;
     }
 
+    @include breakpointHeightDevice() {
+      width: 130px;
+      height: 29.5px;
+      margin-bottom: 20px;
+    }
+
     overflow: hidden;
     text-align: center;
     img {
@@ -132,7 +150,7 @@
       margin: 0 0 30px 0;
     }
     @include breakpointHeightDevice() {
-      @include fsize(1.2);
+      @include fsize(1.05);
     }
     color: var(--text-primary-color);
     font-family: var(--font-benguiat_pro);

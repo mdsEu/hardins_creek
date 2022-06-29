@@ -42,18 +42,15 @@
   }
 
   .wrap_accept_terms {
-    margin: 0 auto 10px auto;
+    margin: 0 auto 8px auto;
     padding: 0;
     @include breakpointSmMin() {
-      margin: 0 auto 20px auto;
       padding: 0 2%;
     }
     @include breakpointXlMin() {
-      padding: 0 20px;
+      padding: 0 10px;
     }
-    @include breakpointHeightMax() {
-      margin: 0 auto 10px auto;
-    }
+
     display: table;
     width: 100%;
     label {
