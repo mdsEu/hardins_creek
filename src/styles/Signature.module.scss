@@ -42,22 +42,19 @@
   }
 
   .wrap_accept_terms {
-    margin: 0 auto 10px auto;
+    margin: 0 auto 8px auto;
     padding: 0;
     @include breakpointSmMin() {
-      margin: 0 auto 20px auto;
       padding: 0 2%;
     }
     @include breakpointXlMin() {
-      padding: 0 20px;
-    }
-    @include breakpointHeightMax() {
-      margin: 0 auto 10px auto;
       padding: 0 10px;
     }
+
     display: table;
     width: 100%;
     label {
+      display: flex;
       position: relative;
       margin-bottom: 5px;
       color: var(--text-primary-color);
@@ -66,21 +63,23 @@
       @include fsize(0.56);
       letter-spacing: 0;
       word-spacing: -0.2px;
+
       @include breakpointSmMin() {
         @include fsize(0.82);
         letter-spacing: 1px;
         word-spacing: 0px;
       }
+
       @include breakpointXlMin() {
         @include fsize(0.9);
         letter-spacing: 0.4px;
       }
 
       @include breakpointHeightDevice() {
-        @include fsize(0.62);
+        @include fsize(0.5);
         letter-spacing: 0;
-        word-spacing: 0px;
       }
+
       .term {
         margin-top: 0;
         width: calc(100% - 18px);
